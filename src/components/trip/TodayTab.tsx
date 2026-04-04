@@ -41,11 +41,11 @@ const days: DayData[] = [
       { time: "14:30", activity: "렌터카 픽업", detail: "혼다렌탈리스 라벤더점 · 하이에이스 10인승", type: "move" },
       { time: "15:30", activity: "시코쓰호로 이동", detail: "차로 약 40분", type: "move" },
       { time: "16:30", activity: "시코쓰호 산책", detail: "일본에서 가장 맑은 호수", type: "activity" },
-      { time: "18:00", activity: "미야비테이 체크인", detail: "시코쓰호 온천 료칸", type: "stay" },
+      { time: "18:00", activity: "파크 호텔 파크 호텔 미야비테이 체크인", detail: "노보리베츠 온천 근처", type: "stay" },
       { time: "19:00", activity: "가이세키 석식", detail: "료칸 코스 요리", type: "food" },
       { time: "21:00", activity: "노천탕 온천", detail: "호수뷰 노천탕", type: "activity" },
     ],
-    meals: ["점심: 기내식 또는 공항에서 간단히", "저녁: 미야비테이 가이세키"],
+    meals: ["점심: 기내식 또는 공항에서 간단히", "저녁: 파크 호텔 미야비테이 가이세키"],
     parentTip: "드디어 홋카이도! 공항에서 렌터카 타고 시코쓰호까지 40분, 도착하면 온천이 기다려요",
     preparation: ["여권", "렌터카 예약서", "국제운전면허증", "편한 신발"],
   },
@@ -53,7 +53,7 @@ const days: DayData[] = [
     day: 2, date: "5월 4일", weekday: "월", title: "노보리베츠 & 도야호",
     location: "노보리베츠 → 도야호",
     schedule: [
-      { time: "08:00", activity: "조식 & 체크아웃", detail: "미야비테이", type: "food" },
+      { time: "08:00", activity: "조식 & 체크아웃", detail: "파크 호텔 미야비테이", type: "food" },
       { time: "09:30", activity: "노보리베츠로 이동", detail: "차로 약 1시간", type: "move" },
       { time: "10:30", activity: "지옥계곡 산책", detail: "화산 온천 계곡, 유황 냄새 주의", type: "activity" },
       { time: "12:00", activity: "노보리베츠 온천가 점심", detail: "라멘 또는 현지 식당", type: "food" },
@@ -63,7 +63,7 @@ const days: DayData[] = [
       { time: "17:00", activity: "토야 코한 테이 체크인", detail: "도야호 온천 호텔 (2박)", type: "stay" },
       { time: "19:00", activity: "뷔페 석식", detail: "호텔 레스토랑", type: "food" },
     ],
-    meals: ["조식: 미야비테이", "점심: 노보리베츠 온천가", "저녁: 토야 코한 테이 뷔페"],
+    meals: ["조식: 파크 호텔 미야비테이", "점심: 노보리베츠 온천가", "저녁: 토야 코한 테이 뷔페"],
     parentTip: "지옥계곡은 평탄한 산책로. 유황 냄새가 강하니 마스크 챙기기",
     preparation: ["온천 타올", "마스크", "편한 신발", "카메라"],
   },
@@ -105,13 +105,13 @@ const dayRoutes = [
     stops: [
       { name: "신치토세공항", emoji: "✈️", lat: 42.7752, lng: 141.6925 },
       { name: "시코쓰호", emoji: "🏞️", lat: 42.7570, lng: 141.3490 },
-      { name: "미야비테이", emoji: "🏨", lat: 42.4957, lng: 141.1412 },
+      { name: "파크 호텔 미야비테이", emoji: "🏨", lat: 42.4957, lng: 141.1412 },
     ],
   },
   {
     day: 2, color: "#7C5BAF",
     stops: [
-      { name: "미야비테이 출발", emoji: "🚗", lat: 42.4957, lng: 141.1412 },
+      { name: "파크 호텔 미야비테이 출발", emoji: "🚗", lat: 42.4957, lng: 141.1412 },
       { name: "노보리베츠 지옥계곡", emoji: "🌋", lat: 42.4933, lng: 141.1573 },
       { name: "도야호", emoji: "🏞️", lat: 42.6100, lng: 140.8560 },
       { name: "토야 코한 테이", emoji: "🏨", lat: 42.5659, lng: 140.8259 },
@@ -573,7 +573,7 @@ const TodayTab = () => {
 
             {/* 숙소 */}
             <motion.div variants={contentVariants} custom={2.5} className="space-y-3">
-              {/* 미야비테이 */}
+              {/* 파크 호텔 미야비테이 */}
               <div className="card-base">
                 <div className="flex items-start gap-3 mb-3">
                   <div
@@ -583,8 +583,8 @@ const TodayTab = () => {
                     <span className="text-xl">🏨</span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-base font-bold text-foreground">미야비테이</p>
-                    <p className="text-sm text-muted-foreground">시코쓰호 온천, Chitose</p>
+                    <p className="text-base font-bold text-foreground">파크 호텔 미야비테이</p>
+                    <p className="text-sm text-muted-foreground">Noboribetsu, Hokkaido</p>
                   </div>
                   <span className={`text-xs font-semibold px-2 py-0.5 rounded-md border ${locationBadge["시코쓰호"]}`}>
                     시코쓰호
@@ -652,8 +652,8 @@ const TodayTab = () => {
                       <span className="text-xl">🏨</span>
                     </div>
                     <div className="flex-1">
-                      <p className="text-base font-bold text-foreground">미야비테이</p>
-                      <p className="text-sm text-muted-foreground">시코쓰호 온천, Chitose</p>
+                      <p className="text-base font-bold text-foreground">파크 호텔 미야비테이</p>
+                      <p className="text-sm text-muted-foreground">Noboribetsu, Hokkaido</p>
                     </div>
                   </motion.div>
                 )}
@@ -662,7 +662,7 @@ const TodayTab = () => {
                     <div className="card-base flex items-center gap-3 opacity-50">
                       <span className="text-xl">🏨</span>
                       <div>
-                        <p className="text-sm text-muted-foreground line-through">미야비테이</p>
+                        <p className="text-sm text-muted-foreground line-through">파크 호텔 미야비테이</p>
                         <p className="text-xs text-muted-foreground">09:00 체크아웃 완료</p>
                       </div>
                     </div>

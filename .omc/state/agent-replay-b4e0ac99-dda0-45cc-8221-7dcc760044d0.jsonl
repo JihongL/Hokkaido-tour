@@ -17,3 +17,5 @@
 {"t":0,"agent":"a062d25","agent_type":"executor","event":"agent_stop","success":true,"duration_ms":92200}
 {"t":0,"agent":"a04009d","agent_type":"executor","event":"agent_start","parent_mode":"none"}
 {"t":0,"agent":"a04009d","agent_type":"executor","event":"agent_stop","success":true,"duration_ms":100591}
+{"t":0,"agent":"a8c9cb6","agent_type":"executor","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"a8c9cb6","agent_type":"executor","event":"agent_stop","success":true,"duration_ms":104470}
