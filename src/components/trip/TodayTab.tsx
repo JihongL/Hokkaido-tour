@@ -41,7 +41,7 @@ const days: DayData[] = [
       { time: "21:00", activity: "노천탕 온천", detail: "호수뷰 노천탕", type: "activity" },
     ],
     meals: ["점심: 기내식 또는 공항에서 간단히", "저녁: 미야비테이 가이세키"],
-    parentTip: "도착 후 바로 운전이라 무리하지 않기! 좌측통행 적응 시간 필요",
+    parentTip: "드디어 홋카이도! 공항에서 렌터카 타고 시코쓰호까지 40분, 도착하면 온천이 기다려요",
     preparation: ["여권", "렌터카 예약서", "국제운전면허증", "편한 신발"],
   },
   {
@@ -682,7 +682,7 @@ const TodayTab = () => {
                 borderColor: "hsl(var(--primary) / 0.18)",
               }}
             >
-              <p className="text-base font-bold text-primary mb-1">서여사 · 이서방 체크!</p>
+              <p className="text-base font-bold text-primary mb-1">오늘의 꿀팁 🍯</p>
               <p className="text-base text-foreground leading-relaxed">{day.parentTip}</p>
             </motion.div>
 
