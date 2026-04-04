@@ -106,31 +106,32 @@ const dayRoutes = [
     day: 1, color: "#9B7EC8",
     stops: [
       { name: "신치토세공항", emoji: "✈️", lat: 42.7752, lng: 141.6925 },
-      { name: "시코쓰호", emoji: "🏞️", lat: 42.7570, lng: 141.3490 },
-      { name: "파크 호텔 미야비테이", emoji: "🏨", lat: 42.4957, lng: 141.1412 },
+      { name: "미야비테이", emoji: "🏨", lat: 42.4957, lng: 141.1412 },
+      { name: "지옥계곡", emoji: "🌋", lat: 42.4933, lng: 141.1573 },
     ],
   },
   {
     day: 2, color: "#7C5BAF",
     stops: [
-      { name: "파크 호텔 미야비테이 출발", emoji: "🚗", lat: 42.4957, lng: 141.1412 },
-      { name: "노보리베츠 지옥계곡", emoji: "🌋", lat: 42.4933, lng: 141.1573 },
-      { name: "도야호", emoji: "🏞️", lat: 42.6100, lng: 140.8560 },
+      { name: "곰목장", emoji: "🐻", lat: 42.4850, lng: 141.1610 },
+      { name: "미야비테이", emoji: "🚗", lat: 42.4957, lng: 141.1412 },
+      { name: "지큐미사키", emoji: "🌊", lat: 42.3040, lng: 141.0020 },
+      { name: "우스산", emoji: "🚡", lat: 42.5440, lng: 140.8390 },
       { name: "토야 코한 테이", emoji: "🏨", lat: 42.5659, lng: 140.8259 },
     ],
   },
   {
     day: 3, color: "#6B8EC4",
     stops: [
-      { name: "도야호 주변", emoji: "🏞️", lat: 42.6100, lng: 140.8560 },
-      { name: "우스산 로프웨이", emoji: "🚡", lat: 42.5440, lng: 140.8390 },
       { name: "토야 코한 테이", emoji: "🏨", lat: 42.5659, lng: 140.8259 },
+      { name: "도야호 주변", emoji: "🏞️", lat: 42.6100, lng: 140.8560 },
     ],
   },
   {
     day: 4, color: "#A0C4B8",
     stops: [
-      { name: "토야 코한 테이 출발", emoji: "🚗", lat: 42.5659, lng: 140.8259 },
+      { name: "토야 코한 테이", emoji: "🚗", lat: 42.5659, lng: 140.8259 },
+      { name: "시코쓰호", emoji: "🏞️", lat: 42.7570, lng: 141.3490 },
       { name: "신치토세공항", emoji: "✈️", lat: 42.7752, lng: 141.6925 },
     ],
   },
