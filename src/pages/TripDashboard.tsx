@@ -39,7 +39,7 @@ const TripDashboard = () => {
         className="sticky top-0 z-40 border-b border-border/50 px-4 py-3 bg-cover bg-center bg-no-repeat text-white shadow-md relative"
         style={{
           paddingTop: "env(safe-area-inset-top, 0px)",
-          backgroundImage: "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('/hokkaido_header.webp')",
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('${import.meta.env.BASE_URL}hokkaido_header.webp')`,
           backgroundPositionY: "20%"
         }}
       >
