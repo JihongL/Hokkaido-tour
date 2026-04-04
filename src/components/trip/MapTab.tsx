@@ -1,13 +1,12 @@
 import { useState, useEffect, useMemo } from "react";
 import { createPortal } from "react-dom";
-import { MapContainer, TileLayer, Marker, Polyline, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 /* ── Types & Constants ── */
 
 type FilterKey = "all" | "관광지" | "온천" | "숙소" | "공항" | "기타";
-type AreaKey = "all" | "day1" | "day2" | "day3" | "day4";
 
 const categoryFilters: { key: FilterKey; emoji: string; label: string }[] = [
   { key: "all", emoji: "📍", label: "전체" },
@@ -26,56 +25,10 @@ function getFilterKey(category: string): FilterKey {
 
 /* ── Data ── */
 
-interface DayRoute {
-  key: AreaKey;
-  day: number;
-  label: string;
-  color: string;
-  stops: { name: string; emoji: string; lat: number; lng: number; detail: string }[];
-}
-
-const dayRoutes: DayRoute[] = [
-  {
-    key: "day1", day: 1, label: "Day 1 · 5/3", color: "#9B7EC8",
-    stops: [
-      { name: "신치토세공항", emoji: "✈️", lat: 42.7752, lng: 141.6925, detail: "KE765 도착 13:25" },
-      { name: "시코쓰호", emoji: "🏞️", lat: 42.7570, lng: 141.3490, detail: "호수 산책 & 온천" },
-      { name: "미야비테이", emoji: "🏨", lat: 42.4957, lng: 141.1412, detail: "시코쓰호 숙소 (1박)" },
-    ],
-  },
-  {
-    key: "day2", day: 2, label: "Day 2 · 5/4", color: "#7C5BAF",
-    stops: [
-      { name: "미야비테이 출발", emoji: "🚗", lat: 42.4957, lng: 141.1412, detail: "아침 출발" },
-      { name: "노보리베츠 지옥계곡", emoji: "🌋", lat: 42.4933, lng: 141.1573, detail: "화산 온천 계곡" },
-      { name: "노보리베츠 온천", emoji: "♨️", lat: 42.4847, lng: 141.1558, detail: "온천 체험" },
-      { name: "도야호", emoji: "🏞️", lat: 42.6100, lng: 140.8560, detail: "호수 전망" },
-      { name: "토야 코한 테이", emoji: "🏨", lat: 42.5659, lng: 140.8259, detail: "도야호 숙소 (2박)" },
-    ],
-  },
-  {
-    key: "day3", day: 3, label: "Day 3 · 5/5", color: "#6B8EC4",
-    stops: [
-      { name: "도야호 주변", emoji: "🏞️", lat: 42.6100, lng: 140.8560, detail: "호수 주변 산책" },
-      { name: "우스산 로프웨이", emoji: "🚡", lat: 42.5440, lng: 140.8390, detail: "화산 전망대 (미확정)" },
-      { name: "토야 코한 테이", emoji: "🏨", lat: 42.5659, lng: 140.8259, detail: "도야호 숙소 (2박)" },
-    ],
-  },
-  {
-    key: "day4", day: 4, label: "Day 4 · 5/6", color: "#A0C4B8",
-    stops: [
-      { name: "토야 코한 테이 출발", emoji: "🚗", lat: 42.5659, lng: 140.8259, detail: "체크아웃" },
-      { name: "렌터카 반납", emoji: "🚗", lat: 42.7752, lng: 141.6925, detail: "신치토세공항 14:30" },
-      { name: "신치토세공항", emoji: "✈️", lat: 42.7752, lng: 141.6925, detail: "KE770 출발 16:20" },
-    ],
-  },
-];
-
 interface MapPlace {
   emoji: string;
   name: string;
   category: string;
-  area: AreaKey;
   description: string;
   why: string;
   address: string;
@@ -87,36 +40,35 @@ interface MapPlace {
 }
 
 const places: MapPlace[] = [
-  { emoji: "✈️", name: "신치토세공항 (CTS)", category: "공항", area: "day1", description: "홋카이도 주요 공항", why: "입출국 공항", address: "New Chitose Airport", visitTime: "입출국 시", transport: "렌터카 픽업", familyNote: "렌터카 픽업은 공항 라벤더점", lat: 42.7752, lng: 141.6925 },
-  { emoji: "🏞️", name: "시코쓰호", category: "관광지", area: "day1", description: "일본에서 가장 맑은 칼데라 호수", why: "투명도 1위의 호수", address: "Lake Shikotsu, Chitose", visitTime: "1~2시간", transport: "공항에서 차로 40분", familyNote: "호숫가 산책 + 온천 마을", lat: 42.7570, lng: 141.3490 },
-  { emoji: "🏨", name: "미야비테이 (시코쓰호)", category: "숙소", area: "day1", description: "시코쓰호 호반 온천 료칸", why: "1박 숙소", address: "Shikotsuko Onsen, Chitose", visitTime: "5/3 체크인", transport: "시코쓰호에서 도보", familyNote: "호수뷰 온천, 가이세키 석식", lat: 42.4957, lng: 141.1412 },
-  { emoji: "🌋", name: "노보리베츠 지옥계곡", category: "관광지", area: "day2", description: "화산 온천 계곡, 유황 냄새", why: "홋카이도 대표 관광지", address: "Jigokudani, Noboribetsu", visitTime: "1~1.5시간", transport: "시코쓰호에서 차로 1시간", familyNote: "산책로 평탄, 유황 냄새 강함", lat: 42.4933, lng: 141.1573 },
-  { emoji: "♨️", name: "노보리베츠 온천가", category: "온천", area: "day2", description: "일본 최고 온천 중 하나", why: "다양한 수질의 온천 체험", address: "Noboribetsu Onsen", visitTime: "1~2시간", transport: "지옥계곡에서 도보", familyNote: "수건은 물에 담그지 않기! 10계명 셋째", lat: 42.4847, lng: 141.1558 },
-  { emoji: "🏞️", name: "도야호", category: "관광지", area: "day2", description: "칼데라 호수, 나카지마 섬 전망", why: "홋카이도 3대 경관", address: "Lake Toya, Toyako", visitTime: "1~2시간", transport: "노보리베츠에서 차로 40분", familyNote: "호수 둘레 산책로, 유람선 가능", lat: 42.6100, lng: 140.8560 },
-  { emoji: "🏨", name: "토야 코한 테이 (도야호)", category: "숙소", area: "day2", description: "도야호 호반 온천 호텔", why: "2박 숙소", address: "Toyako Onsen, Toyako", visitTime: "5/4~5/6", transport: "도야호에서 도보", familyNote: "호수뷰 대욕장, 뷔페 조식", lat: 42.5659, lng: 140.8259 },
-  { emoji: "🚡", name: "우스산 로프웨이", category: "관광지", area: "day3", description: "활화산 전망대, 쇼와신잔 조망", why: "화산 지형 감상", address: "Mt. Usu Ropeway, Sobetsu", visitTime: "1~1.5시간", transport: "도야호에서 차로 15분", familyNote: "로프웨이 탑승, 전망대에서 호수+화산 파노라마", lat: 42.5440, lng: 140.8390 },
+  { emoji: "✈️", name: "신치토세공항 (CTS)", category: "공항", description: "홋카이도 주요 공항", why: "입출국 공항", address: "New Chitose Airport", visitTime: "입출국 시", transport: "렌터카 픽업", familyNote: "렌터카 픽업은 공항 라벤더점", lat: 42.7752, lng: 141.6925 },
+  { emoji: "🏞️", name: "시코쓰호", category: "관광지", description: "일본에서 가장 맑은 칼데라 호수", why: "투명도 1위의 호수", address: "Lake Shikotsu, Chitose", visitTime: "1~2시간", transport: "공항에서 차로 40분", familyNote: "호숫가 산책 + 온천 마을", lat: 42.7570, lng: 141.3490 },
+  { emoji: "🏨", name: "미야비테이 (시코쓰호)", category: "숙소", description: "시코쓰호 호반 온천 료칸", why: "1박 숙소", address: "Shikotsuko Onsen, Chitose", visitTime: "5/3 체크인", transport: "시코쓰호에서 도보", familyNote: "호수뷰 온천, 가이세키 석식", lat: 42.4957, lng: 141.1412 },
+  { emoji: "🌋", name: "노보리베츠 지옥계곡", category: "관광지", description: "화산 온천 계곡, 유황 냄새", why: "홋카이도 대표 관광지", address: "Jigokudani, Noboribetsu", visitTime: "1~1.5시간", transport: "시코쓰호에서 차로 1시간", familyNote: "산책로 평탄, 유황 냄새 강함", lat: 42.4933, lng: 141.1573 },
+  { emoji: "♨️", name: "노보리베츠 온천가", category: "온천", description: "일본 최고 온천 중 하나", why: "다양한 수질의 온천 체험", address: "Noboribetsu Onsen", visitTime: "1~2시간", transport: "지옥계곡에서 도보", familyNote: "수건은 물에 담그지 않기! 10계명 셋째", lat: 42.4847, lng: 141.1558 },
+  { emoji: "🏞️", name: "도야호", category: "관광지", description: "칼데라 호수, 나카지마 섬 전망", why: "홋카이도 3대 경관", address: "Lake Toya, Toyako", visitTime: "1~2시간", transport: "노보리베츠에서 차로 40분", familyNote: "호수 둘레 산책로, 유람선 가능", lat: 42.6100, lng: 140.8560 },
+  { emoji: "🏨", name: "토야 코한 테이 (도야호)", category: "숙소", description: "도야호 호반 온천 호텔", why: "2박 숙소", address: "Toyako Onsen, Toyako", visitTime: "5/4~5/6", transport: "도야호에서 도보", familyNote: "호수뷰 대욕장, 뷔페 조식", lat: 42.5659, lng: 140.8259 },
+  { emoji: "🚡", name: "우스산 로프웨이", category: "관광지", description: "활화산 전망대, 쇼와신잔 조망", why: "화산 지형 감상", address: "Mt. Usu Ropeway, Sobetsu", visitTime: "1~1.5시간", transport: "도야호에서 차로 15분", familyNote: "로프웨이 탑승, 전망대에서 호수+화산 파노라마", lat: 42.5440, lng: 140.8390 },
 ];
 
 interface PlaceCategory {
   title: string;
   emoji: string;
-  area: "all";
   items: { name: string; tip: string }[];
 }
 
 const placeCategories: PlaceCategory[] = [
-  { title: "온천 가이드", emoji: "♨️", area: "all", items: [
+  { title: "온천 가이드", emoji: "♨️", items: [
     { name: "노보리베츠 온천", tip: "유황천, 철천 등 9종 수질. 피부에 따라 선택" },
     { name: "시코쓰호 온천", tip: "투명한 호수를 보며 노천탕 체험" },
     { name: "도야호 온천", tip: "호텔 대욕장 + 족욕 무료" },
   ]},
-  { title: "맛집", emoji: "🍜", area: "all", items: [
+  { title: "맛집", emoji: "🍜", items: [
     { name: "홋카이도 라멘", tip: "미소 라멘이 기본! 삿포로 스타일" },
     { name: "카이세키 요리", tip: "료칸 석식으로 제공, 제철 해산물" },
     { name: "소프트크림", tip: "홋카이도 우유로 만든 진한 맛. 어디서나 350엔 전후" },
     { name: "편의점 간식", tip: "세이코마트(홋카이도 한정 편의점) 꼭 가보기!" },
   ]},
-  { title: "드라이브 코스", emoji: "🚗", area: "all", items: [
+  { title: "드라이브 코스", emoji: "🚗", items: [
     { name: "신치토세→시코쓰호", tip: "40분, 산길 드라이브. 좌측통행 주의!" },
     { name: "시코쓰호→노보리베츠", tip: "1시간, 국도 276→36. 산악 경치" },
     { name: "노보리베츠→도야호", tip: "40분, 고속도로 이용 가능" },
@@ -165,82 +117,35 @@ function FitBounds({ points }: { points: { lat: number; lng: number }[] }) {
   return null;
 }
 
-/* ── Day label helper ── */
-
-function getDayLabel(area: AreaKey): string {
-  if (area === "all") return "전체";
-  const route = dayRoutes.find((r) => r.key === area);
-  return route ? route.label : area;
-}
-
 /* ── Component ── */
 
 const MapTab = () => {
   const [selected, setSelected] = useState<MapPlace | null>(null);
   const [flyTo, setFlyTo] = useState<{ lat: number; lng: number } | null>(null);
   const [activeFilter, setActiveFilter] = useState<FilterKey>("all");
-  const [activeArea, setActiveArea] = useState<AreaKey>("all");
 
   const filteredPlaces = useMemo(() =>
     places.filter((p) => {
-      const matchCat = activeFilter === "all" || getFilterKey(p.category) === activeFilter;
-      const matchArea = activeArea === "all" || p.area === activeArea;
-      return matchCat && matchArea;
+      return activeFilter === "all" || getFilterKey(p.category) === activeFilter;
     }),
-  [activeFilter, activeArea]);
-
-  const fitBoundsPoints = useMemo(() => {
-    if (activeArea !== "all") {
-      const route = dayRoutes.find((r) => r.key === activeArea);
-      if (route) return route.stops;
-    }
-    return filteredPlaces;
-  }, [activeArea, filteredPlaces]);
-
-  const filteredCategories = useMemo(() => {
-    return placeCategories;
-  }, []);
+  [activeFilter]);
 
   const clearFilters = () => {
     setActiveFilter("all");
-    setActiveArea("all");
     setFlyTo(null);
     setSelected(null);
   };
 
-  const hasActiveFilters = activeFilter !== "all" || activeArea !== "all";
+  const hasActiveFilters = activeFilter !== "all";
 
   return (
     <div className="space-y-4 fade-in">
-
-      {/* ── Area Toggle (Day tabs) ── */}
-      <div className="bg-secondary/60 rounded-2xl p-1 flex gap-1">
-        {[
-          { key: "all" as AreaKey, emoji: "🗺️", label: "전체" },
-          ...dayRoutes.map((r) => ({ key: r.key, emoji: "📍", label: r.label })),
-        ].map(({ key, emoji, label }) => {
-          const isActive = activeArea === key;
-          return (
-            <button
-              key={key}
-              onClick={() => { setActiveArea(key); setFlyTo(null); setSelected(null); }}
-              className={`flex-1 flex items-center justify-center gap-1 py-3 rounded-xl text-xs font-bold transition-all active:scale-[0.97] ${
-                isActive ? "bg-card text-foreground shadow-sm" : "text-muted-foreground"
-              }`}
-            >
-              <span className="text-sm">{emoji}</span>
-              <span>{label}</span>
-            </button>
-          );
-        })}
-      </div>
 
       {/* ── Category Chips ── */}
       <div className="flex gap-1.5 overflow-x-auto scrollbar-hide -mx-1 px-1 pb-0.5">
         {categoryFilters.map((f) => {
           const count = places.filter((p) =>
-            (f.key === "all" || getFilterKey(p.category) === f.key) &&
-            (activeArea === "all" || p.area === activeArea)
+            f.key === "all" || getFilterKey(p.category) === f.key
           ).length;
           if (count === 0 && f.key !== "all") return null;
           const isActive = activeFilter === f.key;
@@ -276,7 +181,7 @@ const MapTab = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {!flyTo && <FitBounds points={fitBoundsPoints} />}
+          {!flyTo && <FitBounds points={filteredPlaces} />}
           {flyTo && <FlyToPlace lat={flyTo.lat} lng={flyTo.lng} />}
           {filteredPlaces.map((place, i) => (
             <Marker
@@ -288,16 +193,6 @@ const MapTab = () => {
               }}
             />
           ))}
-          {activeArea !== "all" && (() => {
-            const route = dayRoutes.find((r) => r.key === activeArea);
-            if (!route) return null;
-            return (
-              <Polyline
-                positions={route.stops.map((s) => [s.lat, s.lng] as [number, number])}
-                pathOptions={{ color: route.color, weight: 4, opacity: 0.8, dashArray: "8 4" }}
-              />
-            );
-          })()}
         </MapContainer>
       </div>
 
@@ -305,9 +200,7 @@ const MapTab = () => {
       {hasActiveFilters && (
         <div className="flex items-center justify-between">
           <p className="text-sm text-muted-foreground">
-            {activeArea !== "all" && <span className="font-semibold text-foreground">{getDayLabel(activeArea)}</span>}
-            {activeArea !== "all" && activeFilter !== "all" && " · "}
-            {activeFilter !== "all" && <span className="font-semibold text-foreground">{categoryFilters.find((f) => f.key === activeFilter)?.label}</span>}
+            <span className="font-semibold text-foreground">{categoryFilters.find((f) => f.key === activeFilter)?.label}</span>
             <span className="ml-1.5">{filteredPlaces.length}곳</span>
           </p>
           <button onClick={clearFilters} className="text-sm text-primary font-semibold active:opacity-70">
@@ -334,7 +227,7 @@ const MapTab = () => {
               <p className="text-sm text-muted-foreground truncate">{place.description}</p>
             </div>
             <span className="text-xs px-2 py-1 rounded-full flex-shrink-0 font-medium bg-secondary text-secondary-foreground">
-              {getDayLabel(place.area)}
+              {place.category}
             </span>
           </button>
         ))}
@@ -349,9 +242,9 @@ const MapTab = () => {
       )}
 
       {/* ── Tip Categories ── */}
-      {filteredCategories.length > 0 && (
+      {placeCategories.length > 0 && (
         <div className="space-y-4 pt-2">
-          {filteredCategories.map((cat, ci) => (
+          {placeCategories.map((cat, ci) => (
             <div key={ci}>
               <h3 className="text-base font-bold text-foreground mb-2.5">{cat.emoji} {cat.title}</h3>
               <div className="space-y-1.5">
@@ -396,7 +289,6 @@ const MapTab = () => {
                 <h3 className="text-lg font-bold text-foreground">{selected.name}</h3>
                 <div className="flex gap-1.5 mt-1">
                   <span className="text-xs bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full">{selected.category}</span>
-                  <span className="text-xs bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full">{getDayLabel(selected.area)}</span>
                 </div>
               </div>
             </div>
