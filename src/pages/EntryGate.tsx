@@ -370,7 +370,7 @@ const EntryGate = ({ onEnter }: EntryGateProps) => {
     <div className="min-h-screen bg-background flex items-center justify-center p-4 relative overflow-hidden">
       <div
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-30"
-        style={{ backgroundImage: `url('${import.meta.env.BASE_URL}hokkaido_bg.webp')` }}
+        style={{ backgroundImage: `url('${import.meta.env.BASE_URL}hokkaido_bg_spring.webp')` }}
       />
 
       <AnimatePresence mode="wait">
@@ -391,7 +391,7 @@ const EntryGate = ({ onEnter }: EntryGateProps) => {
               className="text-center mb-8"
             >
               <div className="flex justify-center mb-4">
-                <img src={`${import.meta.env.BASE_URL}vacation_3d_icon.png`} alt="Vacation Icon" className="w-28 h-28 object-contain drop-shadow-xl" />
+                <img src={`${import.meta.env.BASE_URL}vacation_3d_icon.webp`} alt="Vacation Icon" className="w-28 h-28 object-contain drop-shadow-xl" />
               </div>
               <h1 className="text-2xl font-bold text-foreground mb-2">
                 우리 가족 홋카이도 여행
@@ -488,7 +488,7 @@ const EntryGate = ({ onEnter }: EntryGateProps) => {
               className="text-center mb-8"
             >
               <div className="flex justify-center mb-4">
-                <img src={`${import.meta.env.BASE_URL}vacation_3d_icon.png`} alt="Vacation Icon" className="w-24 h-24 object-contain drop-shadow-xl" />
+                <img src={`${import.meta.env.BASE_URL}vacation_3d_icon.webp`} alt="Vacation Icon" className="w-24 h-24 object-contain drop-shadow-xl" />
               </div>
               <h1 className="text-2xl font-bold text-foreground mb-1">
                 홋카이도 드라이브 여행
