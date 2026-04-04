@@ -375,7 +375,7 @@ const TodayTab = () => {
                 />
               </div>
               <div className="space-y-1">
-                {["여권 (유효기간 6개월 이상)", "항공권 정보 저장", "환전 (베트남 동)", "유심/eSIM 준비", "여행자 보험 가입", "호텔 예약 확인서", "Grab 앱 설치", "상비약 챙기기", "선크림 & 모자"].map((item, i) => {
+                {["여권 (유효기간 6개월 이상)", "항공권 정보 저장", "환전 (일본 엔)", "유심/eSIM 준비", "여행자 보험 가입", "호텔 예약 확인서", "국제운전면허증", "상비약 챙기기", "온천 타올"].map((item, i) => {
                   const checked = !!checklist[item];
                   return (
                     <motion.label
@@ -432,11 +432,11 @@ const TodayTab = () => {
                 <div>
                   <p className="text-sm font-bold text-primary mb-1.5">👕 옷차림</p>
                   <ul className="space-y-1.5 text-base text-foreground">
-                    <li>· 낮: 반팔/반바지 (평균 25~30°C)</li>
-                    <li>· 저녁: 얇은 긴팔 하나 (에어컨/바람)</li>
+                    <li>· 낮: 긴팔/얇은 겉옷 (평균 10~15°C)</li>
+                    <li>· 저녁: 패딩 또는 두꺼운 겉옷 (5°C 이하)</li>
                     <li>· 비 올 수 있으니 우산 또는 우비</li>
-                    <li>· 호이안 사원 방문 시 긴바지 필요</li>
-                    <li>· 편한 운동화 + 샌들/슬리퍼</li>
+                    <li>· 온천용 수건/목욕 가운 (료칸 제공)</li>
+                    <li>· 편한 운동화 + 슬리퍼</li>
                   </ul>
                 </div>
                 <div className="border-t border-border pt-3">
@@ -462,9 +462,9 @@ const TodayTab = () => {
                       <span
                         className="text-xs font-bold px-2 py-0.5 rounded-md border"
                         style={{
-                          borderColor: d.location === "호이안" ? "hsl(35, 80%, 70%)" : "hsl(210, 70%, 70%)",
-                          background: d.location === "호이안" ? "hsl(35, 80%, 95%)" : "hsl(210, 70%, 95%)",
-                          color: d.location === "호이안" ? "hsl(35, 80%, 35%)" : "hsl(210, 70%, 35%)",
+                          borderColor: "hsl(270, 50%, 70%)",
+                          background: "hsl(270, 50%, 95%)",
+                          color: "hsl(270, 50%, 35%)",
                         }}
                       >
                         Day {d.day}
@@ -488,60 +488,60 @@ const TodayTab = () => {
 
             {/* 숙소 */}
             <motion.div variants={contentVariants} custom={2.5} className="space-y-3">
-              {/* Little Oasis */}
+              {/* 미야비테이 */}
               <div className="card-base">
                 <div className="flex items-start gap-3 mb-3">
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: "hsl(35, 80%, 92%)" }}
+                    style={{ background: "hsl(270, 50%, 92%)" }}
                   >
                     <span className="text-xl">🏨</span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-base font-bold text-foreground">Little Oasis Hotel</p>
-                    <p className="text-sm text-muted-foreground">215 Lê Thánh Tông, Hội An</p>
+                    <p className="text-base font-bold text-foreground">미야비테이</p>
+                    <p className="text-sm text-muted-foreground">시코쓰호 온천, Chitose</p>
                   </div>
-                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-md border ${locationBadge["호이안"]}`}>
-                    호이안
+                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-md border ${locationBadge["시코쓰호"]}`}>
+                    시코쓰호
                   </span>
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <div className="rounded-xl p-3 text-center" style={{ background: "hsl(var(--secondary) / 0.5)" }}>
                     <p className="text-xs text-muted-foreground mb-0.5">체크인</p>
-                    <p className="text-sm font-bold text-primary">3/20 (금) 14:00</p>
+                    <p className="text-sm font-bold text-primary">5/3 (일) 18:00</p>
                   </div>
                   <div className="rounded-xl p-3 text-center" style={{ background: "hsl(var(--secondary) / 0.5)" }}>
                     <p className="text-xs text-muted-foreground mb-0.5">체크아웃</p>
-                    <p className="text-sm font-bold text-foreground">3/22 (일) 12:00</p>
+                    <p className="text-sm font-bold text-foreground">5/4 (월) 09:00</p>
                   </div>
                 </div>
               </div>
 
-              {/* Novotel */}
+              {/* 토야 코한 테이 */}
               <div className="card-base">
                 <div className="flex items-start gap-3 mb-3">
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: "hsl(210, 70%, 93%)" }}
+                    style={{ background: "hsl(270, 40%, 93%)" }}
                   >
                     <span className="text-xl">🏨</span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-base font-bold text-foreground">Novotel Danang Premier</p>
-                    <p className="text-sm text-muted-foreground">36 Bach Dang St, Đà Nẵng</p>
+                    <p className="text-base font-bold text-foreground">토야 코한 테이</p>
+                    <p className="text-sm text-muted-foreground">도야호 온천, Toyako</p>
                   </div>
-                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-md border ${locationBadge["다낭"]}`}>
-                    다낭
+                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-md border ${locationBadge["도야호"]}`}>
+                    도야호
                   </span>
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <div className="rounded-xl p-3 text-center" style={{ background: "hsl(var(--secondary) / 0.5)" }}>
                     <p className="text-xs text-muted-foreground mb-0.5">체크인</p>
-                    <p className="text-sm font-bold text-primary">3/22 (일) 15:00</p>
+                    <p className="text-sm font-bold text-primary">5/4 (월) 17:00</p>
                   </div>
                   <div className="rounded-xl p-3 text-center" style={{ background: "hsl(var(--secondary) / 0.5)" }}>
                     <p className="text-xs text-muted-foreground mb-0.5">체크아웃</p>
-                    <p className="text-sm font-bold text-foreground">3/23 (월) 12:00</p>
+                    <p className="text-sm font-bold text-foreground">5/6 (수) 08:00</p>
                   </div>
                 </div>
               </div>
@@ -561,48 +561,47 @@ const TodayTab = () => {
             {/* Hotel card — during trip */}
             {phase === "during" && (
               <>
-                {day.day <= 2 && (
+                {day.day === 1 && (
                   <motion.div variants={contentVariants} custom={0} className="card-base flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "hsl(35, 80%, 92%)" }}>
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "hsl(270, 50%, 92%)" }}>
                       <span className="text-xl">🏨</span>
                     </div>
                     <div className="flex-1">
-                      <p className="text-base font-bold text-foreground">Little Oasis Hotel</p>
-                      <p className="text-sm text-muted-foreground">215 Lê Thánh Tông, Hội An</p>
-                      {day.day === 2 && <p className="text-xs text-primary font-semibold mt-1">내일 12:00 체크아웃 → 다낭 이동</p>}
+                      <p className="text-base font-bold text-foreground">미야비테이</p>
+                      <p className="text-sm text-muted-foreground">시코쓰호 온천, Chitose</p>
                     </div>
                   </motion.div>
                 )}
-                {day.day === 3 && (
+                {day.day === 2 && (
                   <motion.div variants={contentVariants} custom={0} className="space-y-2">
                     <div className="card-base flex items-center gap-3 opacity-50">
                       <span className="text-xl">🏨</span>
                       <div>
-                        <p className="text-sm text-muted-foreground line-through">Little Oasis Hotel</p>
-                        <p className="text-xs text-muted-foreground">12:00 체크아웃 완료</p>
+                        <p className="text-sm text-muted-foreground line-through">미야비테이</p>
+                        <p className="text-xs text-muted-foreground">09:00 체크아웃 완료</p>
                       </div>
                     </div>
                     <div className="card-base flex items-center gap-3" style={{ boxShadow: "0 0 0 2px hsl(var(--primary) / 0.25)" }}>
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "hsl(210, 70%, 93%)" }}>
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "hsl(270, 40%, 93%)" }}>
                         <span className="text-xl">🏨</span>
                       </div>
                       <div className="flex-1">
-                        <p className="text-base font-bold text-foreground">Novotel Danang Premier</p>
-                        <p className="text-sm text-muted-foreground">36 Bach Dang St, Đà Nẵng</p>
-                        <p className="text-xs text-primary font-semibold mt-1">15:00 체크인</p>
+                        <p className="text-base font-bold text-foreground">토야 코한 테이</p>
+                        <p className="text-sm text-muted-foreground">도야호 온천, Toyako</p>
+                        <p className="text-xs text-primary font-semibold mt-1">17:00 체크인</p>
                       </div>
                     </div>
                   </motion.div>
                 )}
-                {day.day === 4 && (
+                {day.day >= 3 && (
                   <motion.div variants={contentVariants} custom={0} className="card-base flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "hsl(210, 70%, 93%)" }}>
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "hsl(270, 40%, 93%)" }}>
                       <span className="text-xl">🏨</span>
                     </div>
                     <div className="flex-1">
-                      <p className="text-base font-bold text-foreground">Novotel Danang Premier</p>
-                      <p className="text-sm text-muted-foreground">36 Bach Dang St, Đà Nẵng</p>
-                      <p className="text-xs font-semibold mt-1" style={{ color: "hsl(var(--destructive))" }}>12:00 체크아웃 · 짐 정리 잊지 마세요!</p>
+                      <p className="text-base font-bold text-foreground">토야 코한 테이</p>
+                      <p className="text-sm text-muted-foreground">도야호 온천, Toyako</p>
+                      {day.day === 4 && <p className="text-xs font-semibold mt-1" style={{ color: "hsl(var(--destructive))" }}>08:00 체크아웃 · 짐 정리 잊지 마세요!</p>}
                     </div>
                   </motion.div>
                 )}
@@ -625,26 +624,26 @@ const TodayTab = () => {
                   className="px-5 py-2.5 flex items-center justify-between"
                   style={{
                     background: selectedDay === 0
-                      ? "linear-gradient(135deg, hsl(210, 70%, 50%), hsl(210, 80%, 58%))"
-                      : "linear-gradient(135deg, hsl(20, 85%, 55%), hsl(35, 90%, 58%))",
+                      ? "linear-gradient(135deg, hsl(270, 50%, 55%), hsl(280, 45%, 65%))"
+                      : "linear-gradient(135deg, hsl(270, 50%, 55%), hsl(280, 45%, 65%))",
                   }}
                 >
                   <span className="text-sm font-bold text-white">
                     {selectedDay === 0 ? "가는편" : "오는편"}
                   </span>
                   <span className="text-sm text-white/80">
-                    대한항공 {selectedDay === 0 ? "KE5769" : "KE0458"}
+                    대한항공 {selectedDay === 0 ? "KE765" : "KE770"}
                   </span>
                 </div>
                 <div className="px-5 py-4">
                   <div className="flex items-center justify-between">
                     <div className="text-center">
-                      <p className="text-2xl font-bold text-foreground">{selectedDay === 0 ? "ICN" : "DAD"}</p>
-                      <p className="text-sm text-muted-foreground">{selectedDay === 0 ? "인천" : "다낭"}</p>
-                      <p className="text-base font-bold text-primary mt-1">{selectedDay === 0 ? "09:45" : "15:45"}</p>
+                      <p className="text-2xl font-bold text-foreground">{selectedDay === 0 ? "ICN" : "CTS"}</p>
+                      <p className="text-sm text-muted-foreground">{selectedDay === 0 ? "인천" : "신치토세"}</p>
+                      <p className="text-base font-bold text-primary mt-1">{selectedDay === 0 ? "10:35" : "16:20"}</p>
                     </div>
                     <div className="flex-1 mx-4 flex flex-col items-center">
-                      <p className="text-xs text-muted-foreground mb-2">{selectedDay === 0 ? "4시간 45분" : "4시간 20분"}</p>
+                      <p className="text-xs text-muted-foreground mb-2">{selectedDay === 0 ? "2시간 50분" : "3시간 10분"}</p>
                       <div className="w-full h-px bg-border relative">
                         <div className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary" />
                         <motion.div
@@ -658,16 +657,16 @@ const TodayTab = () => {
                       </div>
                     </div>
                     <div className="text-center">
-                      <p className="text-2xl font-bold text-foreground">{selectedDay === 0 ? "DAD" : "ICN"}</p>
-                      <p className="text-sm text-muted-foreground">{selectedDay === 0 ? "다낭" : "인천"}</p>
-                      <p className="text-base font-bold text-primary mt-1">{selectedDay === 0 ? "12:30" : "22:05"}</p>
+                      <p className="text-2xl font-bold text-foreground">{selectedDay === 0 ? "CTS" : "ICN"}</p>
+                      <p className="text-sm text-muted-foreground">{selectedDay === 0 ? "신치토세" : "인천"}</p>
+                      <p className="text-base font-bold text-primary mt-1">{selectedDay === 0 ? "13:25" : "19:30"}</p>
                     </div>
                   </div>
                 </div>
                 {selectedDay === 0 && (
-                  <div className="mx-5 mb-4 bg-amber-50 border border-amber-200 rounded-xl p-3">
-                    <p className="text-sm font-bold text-amber-800">진에어(LJ) 카운터에서 탑승수속!</p>
-                    <p className="text-xs text-amber-700 mt-0.5">대한항공 코드셰어 · 터미널 2 · 예약번호 EPL***</p>
+                  <div className="mx-5 mb-4 bg-purple-50 border border-purple-200 rounded-xl p-3">
+                    <p className="text-sm font-bold text-purple-800">렌터카 픽업 14:30</p>
+                    <p className="text-xs text-purple-700 mt-0.5">혼다렌탈리스 신치토세공항 라벤더점</p>
                   </div>
                 )}
               </motion.div>
