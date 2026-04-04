@@ -1,7 +1,7 @@
 {
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"node -e \\\"\\nconst { chromium } = require('playwright');\\n(async () => {\\n  const browser = await chromium.launch();\\n  const page = await browser.newPage({ viewport: { width: 390, height: ...",
-  "error": "Exit code 1\nnode:internal/process/promises:332\n    triggerUncaughtException(err, true /* fromPromise */);\n    ^\n\npage.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('text=서약서 저장하기')\u001b[22m\n\n    at [eval]:29:14 {\n  name: 'TimeoutError'\n}\n\nNode.js v25.9.0",
-  "timestamp": "2026-04-04T09:05:06.452Z",
+  "tool_name": "Read",
+  "tool_input_preview": "{\"file_path\":\"/Users/hong/Code/tour-guide/Hokkaido-tour/src/components/trip/TodayTab.tsx\"}",
+  "error": "File content (11843 tokens) exceeds maximum allowed tokens (10000). Use offset and limit parameters to read specific portions of the file, or search for specific content instead of reading the whole file.",
+  "timestamp": "2026-04-04T13:57:41.312Z",
   "retry_count": 1
 }

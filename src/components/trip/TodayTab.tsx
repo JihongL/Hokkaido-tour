@@ -1,5 +1,10 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
+import { MapContainer, TileLayer, Marker, Polyline } from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+delete (L.Icon.Default.prototype as any)._getIconUrl;
 import { useWeatherShikotsu } from "@/hooks/useWeather";
 
 const TRIP_START = new Date("2026-05-03T00:00:00+09:00");
@@ -93,6 +98,86 @@ const days: DayData[] = [
     preparation: ["여권", "기념품 정리", "면세품 수령"],
   },
 ];
+
+const dayRoutes = [
+  {
+    day: 1, color: "#9B7EC8",
+    stops: [
+      { name: "신치토세공항", emoji: "✈️", lat: 42.7752, lng: 141.6925 },
+      { name: "시코쓰호", emoji: "🏞️", lat: 42.7570, lng: 141.3490 },
+      { name: "미야비테이", emoji: "🏨", lat: 42.4957, lng: 141.1412 },
+    ],
+  },
+  {
+    day: 2, color: "#7C5BAF",
+    stops: [
+      { name: "미야비테이 출발", emoji: "🚗", lat: 42.4957, lng: 141.1412 },
+      { name: "노보리베츠 지옥계곡", emoji: "🌋", lat: 42.4933, lng: 141.1573 },
+      { name: "도야호", emoji: "🏞️", lat: 42.6100, lng: 140.8560 },
+      { name: "토야 코한 테이", emoji: "🏨", lat: 42.5659, lng: 140.8259 },
+    ],
+  },
+  {
+    day: 3, color: "#6B8EC4",
+    stops: [
+      { name: "도야호 주변", emoji: "🏞️", lat: 42.6100, lng: 140.8560 },
+      { name: "우스산 로프웨이", emoji: "🚡", lat: 42.5440, lng: 140.8390 },
+      { name: "토야 코한 테이", emoji: "🏨", lat: 42.5659, lng: 140.8259 },
+    ],
+  },
+  {
+    day: 4, color: "#A0C4B8",
+    stops: [
+      { name: "토야 코한 테이 출발", emoji: "🚗", lat: 42.5659, lng: 140.8259 },
+      { name: "신치토세공항", emoji: "✈️", lat: 42.7752, lng: 141.6925 },
+    ],
+  },
+];
+
+function createEmojiIcon(emoji: string) {
+  return L.divIcon({
+    html: `<div style="font-size:16px;text-align:center;line-height:32px;width:32px;height:32px;background:white;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.2);border:2px solid hsl(270,50%,55%);">${emoji}</div>`,
+    className: "emoji-marker",
+    iconSize: [32, 32],
+    iconAnchor: [16, 16],
+  });
+}
+
+const DayRouteMap = ({ dayNumber }: { dayNumber: number }) => {
+  const route = dayRoutes.find(r => r.day === dayNumber);
+  if (!route || route.stops.length === 0) return null;
+
+  const bounds = L.latLngBounds(route.stops.map(s => [s.lat, s.lng] as [number, number]));
+
+  return (
+    <div className="rounded-2xl overflow-hidden border border-border shadow-sm" style={{ height: 200 }}>
+      <MapContainer
+        bounds={bounds}
+        boundsOptions={{ padding: [25, 25] }}
+        style={{ height: "100%", width: "100%" }}
+        zoomControl={false}
+        dragging={false}
+        scrollWheelZoom={false}
+        doubleClickZoom={false}
+        touchZoom={false}
+        attributionControl={false}
+      >
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        {route.stops.map((stop, i) => (
+          <Marker
+            key={i}
+            position={[stop.lat, stop.lng]}
+            icon={createEmojiIcon(stop.emoji)}
+          />
+        ))}
+        <Polyline
+          positions={route.stops.map(s => [s.lat, s.lng] as [number, number])}
+          pathOptions={{ color: route.color, weight: 3, opacity: 0.8, dashArray: "6 4" }}
+        />
+      </MapContainer>
+    </div>
+  );
+};
 
 const typeConfig: Record<string, { icon: string; color: string }> = {
   flight: { icon: "✈️", color: "hsl(210, 70%, 50%)" },
@@ -671,6 +756,11 @@ const TodayTab = () => {
                 )}
               </motion.div>
             )}
+
+            {/* Day route map */}
+            <motion.div variants={contentVariants} custom={0.8}>
+              <DayRouteMap dayNumber={day.day} />
+            </motion.div>
 
             {/* Parent tip */}
             <motion.div
