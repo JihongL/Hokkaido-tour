@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 270 20% 97%;
+    --foreground: 270 15% 15%;
+    --card: 270 15% 99%;
+    --card-foreground: 270 15% 15%;
+    --primary: 270 50% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 270 20% 93%;
+    --secondary-foreground: 270 30% 30%;
+    --muted: 265 12% 91%;
+    --muted-foreground: 270 10% 35%;
+    --accent: 200 40% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 265 15% 88%;
+    --input: 265 15% 88%;
+    --ring: 270 50% 55%;
+    --radius: 1rem;
+    --bottom-nav-height: 5.5rem;
+  }
+
+  .dark {
+    --background: 270 15% 10%;
+    --foreground: 270 15% 90%;
+    --card: 270 12% 13%;
+    --card-foreground: 270 15% 90%;
+    --primary: 270 55% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 270 15% 20%;
+    --secondary-foreground: 270 25% 80%;
+    --muted: 270 8% 18%;
+    --muted-foreground: 270 10% 65%;
+    --accent: 200 35% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 270 8% 20%;
+    --input: 270 8% 20%;
+    --ring: 270 55% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Noto Sans KR', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    overscroll-behavior-y: contain;
+  }
+}
+
+@layer utilities {
+  .text-parent {
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+
+  .card-base {
+    @apply bg-card rounded-2xl p-5 shadow-sm border border-border;
+  }
+
+  .card-highlight {
+    background: linear-gradient(135deg, hsl(270 50% 55%) 0%, hsl(280 45% 65%) 100%);
+    @apply rounded-2xl p-5 text-white shadow-md;
+  }
+
+  .card-sos {
+    @apply bg-red-50 rounded-2xl p-5 border-2 border-red-300;
+  }
+
+  .bottom-nav-safe {
+    padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px));
+  }
+
+  .fade-in {
+    animation: fadeIn 0.35s ease-out forwards;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .emoji-marker {
+    background: none !important;
+    border: none !important;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-out forwards;
+}
