@@ -1,7 +1,7 @@
 {
   "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"node /tmp/playwright-test2.cjs 2>&1\",\"timeout\":120000}",
-  "error": "Exit code 1\n1. Opening site...\nScreenshot 1 saved\n2. Clicking participate button...\nScreenshot 2 saved\n3. Scrolling to bottom of pledge...\n4. Clicking checkbox...\n  Clicked checkbox label\n5. Filling name...\nnode:internal/process/promises:332\n    triggerUncaughtException(err, true /* fromPromise */);\n    ^\n\nlocator.fill: Error: Input of type \"checkbox\" cannot be filled\nCall log:\n\u001b[2m  - waiting for locator('input').first()\u001b[22m\n\u001b[2m    - locator resolved to <input type=\"checkbox\" class=\"mt-1 w-7 ...",
-  "timestamp": "2026-04-04T08:46:21.058Z",
+  "tool_input_preview": "{\"command\":\"node -e \\\"\\nconst { chromium } = require('playwright');\\n(async () => {\\n  const browser = await chromium.launch();\\n  const page = await browser.newPage({ viewport: { width: 390, height: ...",
+  "error": "Exit code 1\nnode:internal/process/promises:332\n    triggerUncaughtException(err, true /* fromPromise */);\n    ^\n\npage.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('text=서약서 저장하기')\u001b[22m\n\n    at [eval]:29:14 {\n  name: 'TimeoutError'\n}\n\nNode.js v25.9.0",
+  "timestamp": "2026-04-04T09:05:06.452Z",
   "retry_count": 1
 }
