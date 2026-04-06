@@ -40,27 +40,28 @@ interface MapPlace {
   familyNote: string;
   lat: number;
   lng: number;
+  googleMapsUrl?: string;
 }
 
 const places: MapPlace[] = [
-  { emoji: "✈️", name: "신치토세공항 (CTS)", category: "공항", description: "홋카이도 주요 공항", why: "입출국 공항", address: "New Chitose Airport", visitTime: "입출국 시", transport: "렌터카 픽업", familyNote: "렌터카 픽업은 공항 라벤더점", lat: 42.7752, lng: 141.6925 },
-  { emoji: "🏞️", name: "시코쓰호", category: "관광지", description: "일본에서 가장 맑은 칼데라 호수", why: "투명도 1위의 호수", address: "Lake Shikotsu, Chitose", visitTime: "1~2시간", transport: "공항에서 차로 40분", familyNote: "호숫가 산책 + 온천 마을", lat: 42.7570, lng: 141.3490 },
-  { emoji: "🏨", name: "파크 호텔 미야비테이", category: "숙소", description: "노보리베츠 온천 근처 호텔", why: "1박 숙소", address: "Noboribetsu, Hokkaido", visitTime: "5/3 체크인", transport: "시코쓰호에서 차로 약 1시간", familyNote: "온천 호텔, 조석식 뷔페 포함", lat: 42.4957, lng: 141.1412 },
-  { emoji: "🌋", name: "노보리베츠 지옥계곡", category: "관광지", description: "화산 온천 계곡, 유황 냄새", why: "홋카이도 대표 관광지", address: "Jigokudani, Noboribetsu", visitTime: "1~1.5시간", transport: "시코쓰호에서 차로 1시간", familyNote: "산책로 평탄, 유황 냄새 강함", lat: 42.4933, lng: 141.1573 },
-  { emoji: "♨️", name: "노보리베츠 온천가", category: "온천", description: "일본 최고 온천 중 하나", why: "다양한 수질의 온천 체험", address: "Noboribetsu Onsen", visitTime: "1~2시간", transport: "지옥계곡에서 도보", familyNote: "수건은 물에 담그지 않기! 10계명 셋째", lat: 42.4847, lng: 141.1558 },
-  { emoji: "🏞️", name: "도야호", category: "관광지", description: "칼데라 호수, 나카지마 섬 전망", why: "홋카이도 3대 경관", address: "Lake Toya, Toyako", visitTime: "1~2시간", transport: "노보리베츠에서 차로 40분", familyNote: "호수 둘레 산책로, 유람선 가능", lat: 42.6100, lng: 140.8560 },
-  { emoji: "🏨", name: "토야 코한 테이 (도야호)", category: "숙소", description: "도야호 호반 온천 호텔", why: "2박 숙소", address: "Toyako Onsen, Toyako", visitTime: "5/4~5/6", transport: "도야호에서 도보", familyNote: "호수뷰 대욕장, 조석식 뷔페 포함", lat: 42.5659, lng: 140.8259 },
-  { emoji: "🚡", name: "우스산 로프웨이", category: "관광지", description: "활화산 전망대, 쇼와신잔 조망", why: "화산 지형 감상", address: "Mt. Usu Ropeway, Sobetsu", visitTime: "1~1.5시간", transport: "도야호에서 차로 15분", familyNote: "로프웨이 탑승, 전망대에서 호수+화산 파노라마", lat: 42.5390, lng: 140.8603 },
-  { emoji: "🚢", name: "도야호 유람선", category: "관광지", description: "나카시마 순환 50분, 30분 간격", why: "호수 위에서 풍경 감상", address: "Toyako Onsen, 유람선 터미널", visitTime: "50분", transport: "성인 1,800엔", familyNote: "앉아서 감상, 체력 부담 제로", lat: 42.5730, lng: 140.8430 },
-  { emoji: "🎆", name: "도야호 불꽃놀이", category: "관광지", description: "매일 밤 20:45~21:05 (4/28~10/31)", why: "호수 위 불꽃놀이", address: "Toyako Onsen 호반", visitTime: "20분", transport: "관람선 1,900엔 (20:35 출항)", familyNote: "호반에서 무료 관람 또는 관람선 탑승", lat: 42.5735, lng: 140.8420 },
-  { emoji: "♨️", name: "도류노유 족욕", category: "온천", description: "호반 무료 천연 족욕탕", why: "원천 가케나가시 족욕", address: "Toyako Onsen 호반", visitTime: "20~30분", transport: "온천가에서 도보", familyNote: "무료, 9:00~22:00 (4/28~10/31)", lat: 42.5735, lng: 140.8410 },
-  { emoji: "🌸", name: "소베쓰 공원", category: "관광지", description: "5월 초 매화 300그루 만개", why: "도야호 조망 + 매화 절경", address: "Sobetsu, Hokkaido", visitTime: "30분~1시간", transport: "온천가에서 차 15분", familyNote: "무료, 주차 15대", lat: 42.5290, lng: 140.8680 },
-  { emoji: "🏔️", name: "사이로 전망대", category: "관광지", description: "도야호+우스산+요테이산 파노라마", why: "전체 조망 최고 스폿", address: "Toyako-cho, Hokkaido", visitTime: "30분~1시간", transport: "온천가에서 차 10분", familyNote: "무료, 대형 주차장, 평탄", lat: 42.6040, lng: 140.7980 },
-  { emoji: "🍦", name: "레이크힐 농장", category: "관광지", description: "목장 젤라토, 요테이산 뷰", why: "홋카이도 우유 젤라토", address: "Toyako-cho Hanawa, Hokkaido", visitTime: "30분~1시간", transport: "온천가에서 차 10분", familyNote: "무료 입장, 주차 무료", lat: 42.6155, lng: 140.7865 },
-  { emoji: "🏛️", name: "서밋 기념관", category: "관광지", description: "G8 정상회담 원탁, 각국 선물 전시", why: "2008년 G8 서밋 개최지", address: "Toyako Onsen, 유람선 터미널", visitTime: "20~30분", transport: "온천가에서 도보", familyNote: "무료, 실내", lat: 42.5730, lng: 140.8430 },
-  { emoji: "♨️", name: "오유누마 천연 족욕", category: "온천", description: "산에서 흘러내리는 온천수 족욕", why: "지옥계곡과 세트", address: "Noboribetsu Onsen, Oyunuma", visitTime: "20~30분", transport: "지옥계곡에서 도보 15분", familyNote: "무료, 타올 지참", lat: 42.4880, lng: 141.1520 },
-  { emoji: "🏖️", name: "톳카리쇼 전망대", category: "관광지", description: "해안 절벽 절경, 무로란 8경", why: "깎아지른 해안 절벽", address: "Muroran, Hokkaido", visitTime: "20~30분", transport: "지구곶에서 차 10분", familyNote: "전망대까지 짧은 거리, 무료", lat: 42.3100, lng: 140.9760 },
-  { emoji: "🌉", name: "하쿠초 대교", category: "관광지", description: "동일본 최대 현수교 1,380m", why: "드라이브로 통과 + 전망", address: "Muroran, Hokkaido", visitTime: "통과 5분", transport: "무료 통행", familyNote: "차에서 내리지 않아도 됨", lat: 42.3380, lng: 140.9550 },
+  { emoji: "✈️", name: "신치토세공항 (CTS)", category: "공항", description: "홋카이도 주요 공항", why: "입출국 공항", address: "New Chitose Airport", visitTime: "입출국 시", transport: "렌터카 픽업", familyNote: "렌터카 픽업은 공항 라벤더점", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=新千歳空港", lat: 42.7752, lng: 141.6925 },
+  { emoji: "🏞️", name: "시코쓰호", category: "관광지", description: "일본에서 가장 맑은 칼데라 호수", why: "투명도 1위의 호수", address: "Lake Shikotsu, Chitose", visitTime: "1~2시간", transport: "공항에서 차로 40분", familyNote: "호숫가 산책 + 온천 마을", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=支笏湖", lat: 42.7570, lng: 141.3490 },
+  { emoji: "🏨", name: "파크 호텔 미야비테이", category: "숙소", description: "노보리베츠 온천 근처 호텔", why: "1박 숙소", address: "Noboribetsu, Hokkaido", visitTime: "5/3 체크인", transport: "시코쓰호에서 차로 약 1시간", familyNote: "온천 호텔, 조석식 뷔페 포함", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=パークホテル雅亭+登別温泉", lat: 42.4957, lng: 141.1412 },
+  { emoji: "🌋", name: "노보리베츠 지옥계곡", category: "관광지", description: "화산 온천 계곡, 유황 냄새", why: "홋카이도 대표 관광지", address: "Jigokudani, Noboribetsu", visitTime: "1~1.5시간", transport: "시코쓰호에서 차로 1시간", familyNote: "산책로 평탄, 유황 냄새 강함", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=登別地獄谷", lat: 42.4933, lng: 141.1573 },
+  { emoji: "♨️", name: "노보리베츠 온천가", category: "온천", description: "일본 최고 온천 중 하나", why: "다양한 수질의 온천 체험", address: "Noboribetsu Onsen", visitTime: "1~2시간", transport: "지옥계곡에서 도보", familyNote: "수건은 물에 담그지 않기! 10계명 셋째", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=登別温泉", lat: 42.4847, lng: 141.1558 },
+  { emoji: "🏞️", name: "도야호", category: "관광지", description: "칼데라 호수, 나카지마 섬 전망", why: "홋카이도 3대 경관", address: "Lake Toya, Toyako", visitTime: "1~2시간", transport: "노보리베츠에서 차로 40분", familyNote: "호수 둘레 산책로, 유람선 가능", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=洞爺湖", lat: 42.6100, lng: 140.8560 },
+  { emoji: "🏨", name: "토야 코한 테이 (도야호)", category: "숙소", description: "도야호 호반 온천 호텔", why: "2박 숙소", address: "Toyako Onsen, Toyako", visitTime: "5/4~5/6", transport: "도야호에서 도보", familyNote: "호수뷰 대욕장, 조석식 뷔페 포함", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=洞爺湖畔亭+洞爺湖温泉", lat: 42.5659, lng: 140.8259 },
+  { emoji: "🚡", name: "우스산 로프웨이", category: "관광지", description: "활화산 전망대, 쇼와신잔 조망", why: "화산 지형 감상", address: "Mt. Usu Ropeway, Sobetsu", visitTime: "1~1.5시간", transport: "도야호에서 차로 15분", familyNote: "로프웨이 탑승, 전망대에서 호수+화산 파노라마", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=有珠山ロープウェイ", lat: 42.5390, lng: 140.8603 },
+  { emoji: "🚢", name: "도야호 유람선", category: "관광지", description: "나카시마 순환 50분, 30분 간격", why: "호수 위에서 풍경 감상", address: "Toyako Onsen, 유람선 터미널", visitTime: "50분", transport: "성인 1,800엔", familyNote: "앉아서 감상, 체력 부담 제로", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=洞爺湖汽船+洞爺湖温泉", lat: 42.5730, lng: 140.8430 },
+  { emoji: "🎆", name: "도야호 불꽃놀이", category: "관광지", description: "매일 밤 20:45~21:05 (4/28~10/31)", why: "호수 위 불꽃놀이", address: "Toyako Onsen 호반", visitTime: "20분", transport: "관람선 1,900엔 (20:35 출항)", familyNote: "호반에서 무료 관람 또는 관람선 탑승", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=洞爺湖ロングラン花火大会", lat: 42.5735, lng: 140.8420 },
+  { emoji: "♨️", name: "도류노유 족욕", category: "온천", description: "호반 무료 천연 족욕탕", why: "원천 가케나가시 족욕", address: "Toyako Onsen 호반", visitTime: "20~30분", transport: "온천가에서 도보", familyNote: "무료, 9:00~22:00 (4/28~10/31)", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=洞龍の湯+洞爺湖温泉", lat: 42.5735, lng: 140.8410 },
+  { emoji: "🌸", name: "소베쓰 공원", category: "관광지", description: "5월 초 매화 300그루 만개", why: "도야호 조망 + 매화 절경", address: "Sobetsu, Hokkaido", visitTime: "30분~1시간", transport: "온천가에서 차 15분", familyNote: "무료, 주차 15대", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=壮瞥公園+北海道壮瞥町", lat: 42.5290, lng: 140.8680 },
+  { emoji: "🏔️", name: "사이로 전망대", category: "관광지", description: "도야호+우스산+요테이산 파노라마", why: "전체 조망 최고 스폿", address: "Toyako-cho, Hokkaido", visitTime: "30분~1시간", transport: "온천가에서 차 10분", familyNote: "무료, 대형 주차장, 평탄", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=サイロ展望台+洞爺湖", lat: 42.6040, lng: 140.7980 },
+  { emoji: "🍦", name: "레이크힐 농장", category: "관광지", description: "목장 젤라토, 요테이산 뷰", why: "홋카이도 우유 젤라토", address: "Toyako-cho Hanawa, Hokkaido", visitTime: "30분~1시간", transport: "온천가에서 차 10분", familyNote: "무료 입장, 주차 무료", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=レークヒルファーム+洞爺湖", lat: 42.6155, lng: 140.7865 },
+  { emoji: "🏛️", name: "서밋 기념관", category: "관광지", description: "G8 정상회담 원탁, 각국 선물 전시", why: "2008년 G8 서밋 개최지", address: "Toyako Onsen, 유람선 터미널", visitTime: "20~30분", transport: "온천가에서 도보", familyNote: "무료, 실내", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=洞爺湖サミット記念館", lat: 42.5730, lng: 140.8430 },
+  { emoji: "♨️", name: "오유누마 천연 족욕", category: "온천", description: "산에서 흘러내리는 온천수 족욕", why: "지옥계곡과 세트", address: "Noboribetsu Onsen, Oyunuma", visitTime: "20~30분", transport: "지옥계곡에서 도보 15분", familyNote: "무료, 타올 지참", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=大湯沼川天然足湯+登別温泉", lat: 42.4880, lng: 141.1520 },
+  { emoji: "🏖️", name: "톳카리쇼 전망대", category: "관광지", description: "해안 절벽 절경, 무로란 8경", why: "깎아지른 해안 절벽", address: "Muroran, Hokkaido", visitTime: "20~30분", transport: "지구곶에서 차 10분", familyNote: "전망대까지 짧은 거리, 무료", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=トッカリショ展望台+室蘭", lat: 42.3100, lng: 140.9760 },
+  { emoji: "🌉", name: "하쿠초 대교", category: "관광지", description: "동일본 최대 현수교 1,380m", why: "드라이브로 통과 + 전망", address: "Muroran, Hokkaido", visitTime: "통과 5분", transport: "무료 통행", familyNote: "차에서 내리지 않아도 됨", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=白鳥大橋+室蘭", lat: 42.3380, lng: 140.9550 },
   ...getSelectedRestaurants().map(r => ({
     emoji: "🍽️",
     name: r.nameKr,
@@ -342,7 +343,7 @@ const MapTab = () => {
               {/* Actions */}
               <div className="flex gap-2 pt-1">
                 <a
-                  href={`https://maps.google.com/?q=${selected.lat},${selected.lng}`}
+                  href={selected.googleMapsUrl || `https://www.google.com/maps/search/?api=1&query=${selected.lat},${selected.lng}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 text-center bg-secondary text-secondary-foreground min-h-[48px] flex items-center justify-center rounded-xl text-sm font-bold active:opacity-80 transition-opacity"
