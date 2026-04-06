@@ -827,6 +827,40 @@ const TodayTab = () => {
                         {item.detail && (
                           <p className="text-sm text-muted-foreground mt-0.5">{item.detail}</p>
                         )}
+                        {/* 외식 끼니에 맛집 추천 */}
+                        {item.type === "food" && (() => {
+                          const mealKey = item.activity.includes("점심")
+                            ? `day${day.day}-lunch`
+                            : item.activity.includes("석식") && !item.detail?.includes("호텔")
+                              ? `day${day.day}-dinner`
+                              : null;
+                          const recs = mealKey ? (mealRecommendations[mealKey] || []) : [];
+                          const recList = recs.map(id => restaurants.find(r => r.id === id)).filter(Boolean);
+                          if (recList.length === 0) return null;
+                          return (
+                            <div className="mt-2 space-y-1.5">
+                              {recList.map(r => r && (
+                                <a
+                                  key={r.id}
+                                  href={r.googleMapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(r.nameJa + " " + r.address)}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="flex items-center gap-2 bg-orange-50 border border-orange-200 rounded-lg px-2.5 py-2 active:scale-[0.98] transition-transform"
+                                >
+                                  <span className="text-base">🍽️</span>
+                                  <div className="flex-1 min-w-0">
+                                    <div className="flex items-center gap-1.5">
+                                      <span className="text-sm font-bold text-foreground truncate">{r.nameKr}</span>
+                                      <span className="text-xs font-bold text-orange-600 bg-orange-100 px-1 py-0.5 rounded flex-shrink-0">★{r.rating}</span>
+                                    </div>
+                                    <p className="text-xs text-muted-foreground truncate">{r.representativeMenu}</p>
+                                  </div>
+                                  <span className="text-sm text-orange-500 flex-shrink-0">📍</span>
+                                </a>
+                              ))}
+                            </div>
+                          );
+                        })()}
                       </div>
                     </motion.div>
                   ))}
