@@ -28,6 +28,10 @@ export interface Restaurant {
   seniorNote: string;
   lat: number;
   lng: number;
+  /** GW 영업 상태: confirmed=확인됨, likely=가능성높음, check=확인필요 */
+  gwStatus: "confirmed" | "likely" | "check";
+  /** true이면 GW 백업용 식당 */
+  isBackup?: boolean;
   // 하위 호환용 필드
   familyFriendly: boolean;
   familyNote: string;
@@ -115,6 +119,7 @@ export const restaurants: Restaurant[] = [
     seniorNote: "공항 라멘도장 1위, 새우 풍미 진한 라멘. 10명 분산 입장으로 빠르게 식사 가능",
     lat: 42.7877,
     lng: 141.6803,
+    gwStatus: "confirmed",
     familyFriendly: true,
     familyNote: "공항 라멘도장 1위, 새우 풍미 진한 라멘. 10명 분산 입장으로 빠르게 식사 가능",
     dayRecommendation: ["Day 1 점심"],
@@ -143,6 +148,7 @@ export const restaurants: Restaurant[] = [
     seniorNote: "72석으로 10명도 비교적 빨리 착석 가능. 하코다테 직송 해산물 덮밥이 일품",
     lat: 42.7871,
     lng: 141.6804,
+    gwStatus: "confirmed",
     familyFriendly: true,
     familyNote: "72석으로 10명도 비교적 빨리 착석 가능. 하코다테 직송 해산물 덮밥이 일품",
     dayRecommendation: ["Day 1 점심"],
@@ -171,6 +177,7 @@ export const restaurants: Restaurant[] = [
     seniorNote: "삿포로 유명 스프카레 체인의 공항점. 50석으로 여유 있고, 매운맛 조절 가능. 화학조미료 무첨가",
     lat: 42.7888,
     lng: 141.6807,
+    gwStatus: "confirmed",
     familyFriendly: true,
     familyNote: "삿포로 유명 스프카레 체인의 공항점. 50석으로 여유 있고, 매운맛 조절 가능. 화학조미료 무첨가",
     dayRecommendation: ["Day 1 점심"],
@@ -203,6 +210,7 @@ export const restaurants: Restaurant[] = [
     seniorNote: "무로란 대표 스키야키 노포. 개인실 30명까지 가능해 10명 그룹 최적. 돼지고기 니쿠나베가 지역 명물",
     lat: 42.3177,
     lng: 140.9721,
+    gwStatus: "check",
     familyFriendly: true,
     familyNote: "무로란 대표 스키야키 노포. 개인실 30명까지 가능해 10명 그룹 최적. 돼지고기 니쿠나베가 지역 명물",
     dayRecommendation: ["Day 2 점심"],
@@ -231,6 +239,7 @@ export const restaurants: Restaurant[] = [
     seniorNote: "1920년 창업 105년 역사 노포. 72석으로 넉넉하고 텐푸라/소바 메뉴가 어르신 입맛에 맞음. 주차 9대",
     lat: 42.3170,
     lng: 140.9720,
+    gwStatus: "check",
     familyFriendly: true,
     familyNote: "1920년 창업 105년 역사 노포. 72석으로 넉넉하고 텐푸라/소바 메뉴가 어르신 입맛에 맞음. 주차 9대",
     dayRecommendation: ["Day 2 점심"],
@@ -259,6 +268,7 @@ export const restaurants: Restaurant[] = [
     seniorNote: "1968년 개업 무로란야키토리(돼지꼬치+겨자) 노포. 58석으로 10명 수용 가능. 카레라멘과 야키토리 세트가 지역색 만점",
     lat: 42.3210,
     lng: 140.9560,
+    gwStatus: "check",
     familyFriendly: true,
     familyNote: "1968년 개업 무로란야키토리(돼지꼬치+겨자) 노포. 58석으로 10명 수용 가능. 카레라멘과 야키토리 세트가 지역색 만점",
     dayRecommendation: ["Day 2 점심"],
@@ -291,6 +301,7 @@ export const restaurants: Restaurant[] = [
     seniorNote: "도야호 전망 레스토랑. 런치코스 ¥3,700~로 가성비 좋은 프렌치. 개인실·대절 가능, 그랜드피아노가 있는 우아한 공간",
     lat: 42.6390,
     lng: 140.8155,
+    gwStatus: "check",
     familyFriendly: true,
     familyNote: "도야호 전망 레스토랑. 런치코스 ¥3,700~로 가성비 좋은 프렌치. 개인실·대절 가능, 그랜드피아노가 있는 우아한 공간",
     dayRecommendation: ["Day 3 점심"],
@@ -319,6 +330,7 @@ export const restaurants: Restaurant[] = [
     seniorNote: "도로 휴게소(미치노에키) 내 식당. 60석+대형 주차장으로 10명 편하게 이용. 바다 전망 테라스에서 가리비 요리가 인기",
     lat: 42.5530,
     lng: 140.7980,
+    gwStatus: "confirmed",
     familyFriendly: true,
     familyNote: "도로 휴게소(미치노에키) 내 식당. 60석+대형 주차장으로 10명 편하게 이용. 바다 전망 테라스에서 가리비 요리가 인기",
     dayRecommendation: ["Day 3 점심"],
@@ -347,6 +359,7 @@ export const restaurants: Restaurant[] = [
     seniorNote: "온천거리 내 솥밥 전문점. 도야호 전망 좌석 있고 50석으로 여유. 가마메시는 따뜻하고 소화가 좋아 어르신에게 적합",
     lat: 42.5650,
     lng: 140.8230,
+    gwStatus: "likely",
     familyFriendly: true,
     familyNote: "온천거리 내 솥밥 전문점. 도야호 전망 좌석 있고 50석으로 여유. 가마메시는 따뜻하고 소화가 좋아 어르신에게 적합",
     dayRecommendation: ["Day 3 점심"],
@@ -379,6 +392,7 @@ export const restaurants: Restaurant[] = [
     seniorNote: "도야호수 전망 통나무집 양식 레스토랑. 느긋한 분위기로 어르신 그룹 저녁 식사에 적합. 포크촙·함박이 인기",
     lat: 42.5850,
     lng: 140.8100,
+    gwStatus: "check",
     familyFriendly: true,
     familyNote: "도야호수 전망 통나무집 양식 레스토랑. 느긋한 분위기로 어르신 그룹 저녁 식사에 적합. 포크촙·함박이 인기",
     dayRecommendation: ["Day 3 저녁"],
@@ -407,6 +421,7 @@ export const restaurants: Restaurant[] = [
     seniorNote: "온천마을 야키니쿠점. 테이블석 40석, 예약 가능. 양고기 징기스칸과 홋카이도산 소고기를 1인 ¥3,000대로 즐길 수 있음",
     lat: 42.5660,
     lng: 140.8220,
+    gwStatus: "likely",
     familyFriendly: true,
     familyNote: "온천마을 야키니쿠점. 테이블석 40석, 예약 가능. 양고기 징기스칸과 홋카이도산 소고기를 1인 ¥3,000대로 즐길 수 있음",
     dayRecommendation: ["Day 3 저녁"],
@@ -561,7 +576,7 @@ export const mealRecommendations: Record<string, string[]> = {
   "day1-lunch": ["d1l-01", "d1l-02", "d1l-03"],   // 공항: 에비소바, 키쿠요, 랏쿄
   "day2-lunch": ["d2l-01", "d2l-02", "d2l-03"],   // 무로란: 노자키, 텐카츠, 하마카츠
   "day3-lunch": ["d3l-01", "d3l-02", "d3l-03"],   // 도야호: 피닉스, 아푸타, 카와나미
-  "day3-dinner": ["d3d-01", "d3d-02", "d3d-03"],  // 도야호: 캐나디안, 규스케, 마츠마에야
+  // day3-dinner: 호텔 뷔페 (토야 코한 테이)
   "day4-lunch": ["d4l-01", "d4l-02", "d4l-03"],   // 시코쓰호: 코토부키, 톤톤, 공항 이토
 };
 

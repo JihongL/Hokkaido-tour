@@ -40,12 +40,12 @@ const days: DayData[] = [
       { time: "10:35", activity: "인천 출발 (KE765)", type: "flight" },
       { time: "13:25", activity: "신치토세공항 도착", detail: "입국심사·세관", type: "flight" },
       { time: "14:30", activity: "렌터카 픽업", detail: "혼다렌탈리스 라벤더점 · 예약 확인서 지참", type: "move" },
-      { time: "16:00", activity: "미야비테이 체크인", detail: "노보리베츠 온천 호텔", type: "stay" },
-      { time: "16:30", activity: "지옥계곡 주변 구경", detail: "노보리베츠 지옥계곡 등 호텔 주변 산책", type: "activity" },
-      { time: "19:00", activity: "석식", detail: "호텔 식사", type: "food" },
+      { time: "17:00", activity: "미야비테이 체크인", detail: "노보리베츠 온천 호텔 · 5실 화양실", type: "stay" },
+      { time: "17:30", activity: "지옥계곡 주변 구경", detail: "노보리베츠 지옥계곡 등 호텔 주변 산책", type: "activity" },
+      { time: "19:00", activity: "석식", detail: "호텔 뷔페", type: "food" },
       { time: "21:00", activity: "온천", detail: "미야비테이 온천", type: "activity" },
     ],
-    meals: ["점심: 기내식 또는 공항에서 간단히", "저녁: 미야비테이 호텔 식사"],
+    meals: ["점심: 기내식 또는 공항에서 간단히", "저녁: 미야비테이 호텔 뷔페"],
     parentTip: "드디어 홋카이도! 공항에서 렌터카 타고 노보리베츠까지 이동, 지옥계곡 산책 후 온천!",
     preparation: ["여권", "렌터카 예약서", "국제운전면허증", "편한 신발"],
   },
@@ -55,17 +55,17 @@ const days: DayData[] = [
     schedule: [
       { time: "08:00", activity: "조식", detail: "호텔", type: "food" },
       { time: "09:30", activity: "곰목장", detail: "노보리베츠 곰목장 · 로프웨이 탑승", type: "activity" },
-      { time: "11:00", activity: "미야비테이 체크아웃", type: "stay" },
+      { time: "10:00", activity: "미야비테이 체크아웃", type: "stay" },
       { time: "12:00", activity: "점심", detail: "현지 식당", type: "food" },
       { time: "13:30", activity: "해안도로 드라이브", detail: "노보리베츠 → 도야호 · 경치 좋은 루트", type: "move" },
       { time: "14:30", activity: "지큐미사키 (지구곶)", detail: "태평양 절경 전망대", type: "activity" },
       { time: "15:30", activity: "우스산 로프웨이", detail: "활화산 전망대", type: "activity" },
-      { time: "17:00", activity: "토야 코한 테이 체크인", detail: "도야호 온천 호텔 (2박)", type: "stay" },
-      { time: "19:00", activity: "석식", detail: "호텔 식사", type: "food" },
+      { time: "15:00", activity: "토야 코한 테이 체크인", detail: "도야호 온천 호텔 (2박) · 호수뷰 화양실", type: "stay" },
+      { time: "19:00", activity: "석식", detail: "호텔 뷔페", type: "food" },
       { time: "20:30", activity: "온천", detail: "토야 코한 테이 온천", type: "activity" },
       { time: "21:00", activity: "도야호 불꽃놀이", detail: "시간 확인 필요", type: "activity" },
     ],
-    meals: ["조식: 호텔", "점심: 현지 식당", "저녁: 토야 코한 테이 호텔 식사"],
+    meals: ["조식: 호텔 뷔페", "점심: 현지 식당", "저녁: 토야 코한 테이 호텔 뷔페"],
     parentTip: "알찬 하루! 곰목장 로프웨이, 지구곶 절경, 우스산까지. 밤에는 도야호 불꽃놀이!",
     preparation: ["온천 타올", "카메라", "편한 신발"],
   },
@@ -78,10 +78,10 @@ const days: DayData[] = [
       { time: "11:30", activity: "공원?", detail: "미확정 — 추후 업데이트 예정", type: "placeholder" },
       { time: "13:00", activity: "점심?", detail: "미확정 — 추후 업데이트 예정", type: "placeholder" },
       { time: "15:00", activity: "도야호 크루징?", detail: "도야호 유람선 · 운항 여부 확인", type: "placeholder" },
-      { time: "18:00", activity: "석식?", detail: "미확정 — 추후 업데이트 예정", type: "placeholder" },
-      { time: "20:00", activity: "호텔 휴식", detail: "숙소 미정", type: "placeholder" },
+      { time: "18:00", activity: "석식", detail: "호텔 뷔페", type: "food" },
+      { time: "20:00", activity: "온천", detail: "토야 코한 테이 온천", type: "activity" },
     ],
-    meals: ["조식: 호텔", "점심: 미정", "저녁: 미정"],
+    meals: ["조식: 호텔 뷔페", "점심: 미정", "저녁: 토야 코한 테이 호텔 뷔페"],
     parentTip: "여유로운 하루. 컨디션에 맞춰 자유롭게!",
     preparation: ["편한 옷", "카메라"],
   },
@@ -96,7 +96,7 @@ const days: DayData[] = [
       { time: "16:20", activity: "신치토세 출발 (KE770)", type: "flight" },
       { time: "19:30", activity: "인천 도착", type: "flight" },
     ],
-    meals: ["조식: 호텔", "점심: 미정", "저녁: 기내식"],
+    meals: ["조식: 호텔 뷔페", "점심: 미정", "저녁: 기내식"],
     parentTip: "마지막 날! 시코쓰호 들르고 공항으로. 기념품 쇼핑 시간 확보, 로이스 초콜릿 추천!",
     preparation: ["여권", "기념품 정리", "면세품 수령"],
   },
@@ -598,11 +598,11 @@ const TodayTab = () => {
                 <div className="grid grid-cols-2 gap-2">
                   <div className="rounded-xl p-3 text-center" style={{ background: "hsl(var(--secondary) / 0.5)" }}>
                     <p className="text-xs text-muted-foreground mb-0.5">체크인</p>
-                    <p className="text-sm font-bold text-primary">5/3 (일) 18:00</p>
+                    <p className="text-sm font-bold text-primary">5/3 (일) 17:00</p>
                   </div>
                   <div className="rounded-xl p-3 text-center" style={{ background: "hsl(var(--secondary) / 0.5)" }}>
                     <p className="text-xs text-muted-foreground mb-0.5">체크아웃</p>
-                    <p className="text-sm font-bold text-foreground">5/4 (월) 09:00</p>
+                    <p className="text-sm font-bold text-foreground">5/4 (월) 10:00</p>
                   </div>
                 </div>
               </div>
@@ -627,11 +627,11 @@ const TodayTab = () => {
                 <div className="grid grid-cols-2 gap-2">
                   <div className="rounded-xl p-3 text-center" style={{ background: "hsl(var(--secondary) / 0.5)" }}>
                     <p className="text-xs text-muted-foreground mb-0.5">체크인</p>
-                    <p className="text-sm font-bold text-primary">5/4 (월) 17:00</p>
+                    <p className="text-sm font-bold text-primary">5/4 (월) 15:00</p>
                   </div>
                   <div className="rounded-xl p-3 text-center" style={{ background: "hsl(var(--secondary) / 0.5)" }}>
                     <p className="text-xs text-muted-foreground mb-0.5">체크아웃</p>
-                    <p className="text-sm font-bold text-foreground">5/6 (수) 08:00</p>
+                    <p className="text-sm font-bold text-foreground">5/6 (수) 10:00</p>
                   </div>
                 </div>
               </div>
@@ -668,7 +668,7 @@ const TodayTab = () => {
                       <span className="text-xl">🏨</span>
                       <div>
                         <p className="text-sm text-muted-foreground line-through">파크 호텔 미야비테이</p>
-                        <p className="text-xs text-muted-foreground">09:00 체크아웃 완료</p>
+                        <p className="text-xs text-muted-foreground">10:00 체크아웃 완료</p>
                       </div>
                     </div>
                     <div className="card-base flex items-center gap-3" style={{ boxShadow: "0 0 0 2px hsl(var(--primary) / 0.25)" }}>
@@ -678,7 +678,7 @@ const TodayTab = () => {
                       <div className="flex-1">
                         <p className="text-base font-bold text-foreground">토야 코한 테이</p>
                         <p className="text-sm text-muted-foreground">도야호 온천, Toyako</p>
-                        <p className="text-xs text-primary font-semibold mt-1">17:00 체크인</p>
+                        <p className="text-xs text-primary font-semibold mt-1">15:00 체크인</p>
                       </div>
                     </div>
                   </motion.div>
@@ -691,7 +691,7 @@ const TodayTab = () => {
                     <div className="flex-1">
                       <p className="text-base font-bold text-foreground">토야 코한 테이</p>
                       <p className="text-sm text-muted-foreground">도야호 온천, Toyako</p>
-                      {day.day === 4 && <p className="text-xs font-semibold mt-1" style={{ color: "hsl(var(--destructive))" }}>08:00 체크아웃 · 짐 정리 잊지 마세요!</p>}
+                      {day.day === 4 && <p className="text-xs font-semibold mt-1" style={{ color: "hsl(var(--destructive))" }}>10:00 체크아웃 · 짐 정리 잊지 마세요!</p>}
                     </div>
                   </motion.div>
                 )}

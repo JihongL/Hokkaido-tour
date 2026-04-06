@@ -45,11 +45,11 @@ interface MapPlace {
 const places: MapPlace[] = [
   { emoji: "✈️", name: "신치토세공항 (CTS)", category: "공항", description: "홋카이도 주요 공항", why: "입출국 공항", address: "New Chitose Airport", visitTime: "입출국 시", transport: "렌터카 픽업", familyNote: "렌터카 픽업은 공항 라벤더점", lat: 42.7752, lng: 141.6925 },
   { emoji: "🏞️", name: "시코쓰호", category: "관광지", description: "일본에서 가장 맑은 칼데라 호수", why: "투명도 1위의 호수", address: "Lake Shikotsu, Chitose", visitTime: "1~2시간", transport: "공항에서 차로 40분", familyNote: "호숫가 산책 + 온천 마을", lat: 42.7570, lng: 141.3490 },
-  { emoji: "🏨", name: "파크 호텔 미야비테이", category: "숙소", description: "노보리베츠 온천 근처 호텔", why: "1박 숙소", address: "Noboribetsu, Hokkaido", visitTime: "5/3 체크인", transport: "시코쓰호에서 차로 약 1시간", familyNote: "온천 료칸, 가이세키 석식", lat: 42.4957, lng: 141.1412 },
+  { emoji: "🏨", name: "파크 호텔 미야비테이", category: "숙소", description: "노보리베츠 온천 근처 호텔", why: "1박 숙소", address: "Noboribetsu, Hokkaido", visitTime: "5/3 체크인", transport: "시코쓰호에서 차로 약 1시간", familyNote: "온천 호텔, 조석식 뷔페 포함", lat: 42.4957, lng: 141.1412 },
   { emoji: "🌋", name: "노보리베츠 지옥계곡", category: "관광지", description: "화산 온천 계곡, 유황 냄새", why: "홋카이도 대표 관광지", address: "Jigokudani, Noboribetsu", visitTime: "1~1.5시간", transport: "시코쓰호에서 차로 1시간", familyNote: "산책로 평탄, 유황 냄새 강함", lat: 42.4933, lng: 141.1573 },
   { emoji: "♨️", name: "노보리베츠 온천가", category: "온천", description: "일본 최고 온천 중 하나", why: "다양한 수질의 온천 체험", address: "Noboribetsu Onsen", visitTime: "1~2시간", transport: "지옥계곡에서 도보", familyNote: "수건은 물에 담그지 않기! 10계명 셋째", lat: 42.4847, lng: 141.1558 },
   { emoji: "🏞️", name: "도야호", category: "관광지", description: "칼데라 호수, 나카지마 섬 전망", why: "홋카이도 3대 경관", address: "Lake Toya, Toyako", visitTime: "1~2시간", transport: "노보리베츠에서 차로 40분", familyNote: "호수 둘레 산책로, 유람선 가능", lat: 42.6100, lng: 140.8560 },
-  { emoji: "🏨", name: "토야 코한 테이 (도야호)", category: "숙소", description: "도야호 호반 온천 호텔", why: "2박 숙소", address: "Toyako Onsen, Toyako", visitTime: "5/4~5/6", transport: "도야호에서 도보", familyNote: "호수뷰 대욕장, 뷔페 조식", lat: 42.5659, lng: 140.8259 },
+  { emoji: "🏨", name: "토야 코한 테이 (도야호)", category: "숙소", description: "도야호 호반 온천 호텔", why: "2박 숙소", address: "Toyako Onsen, Toyako", visitTime: "5/4~5/6", transport: "도야호에서 도보", familyNote: "호수뷰 대욕장, 조석식 뷔페 포함", lat: 42.5659, lng: 140.8259 },
   { emoji: "🚡", name: "우스산 로프웨이", category: "관광지", description: "활화산 전망대, 쇼와신잔 조망", why: "화산 지형 감상", address: "Mt. Usu Ropeway, Sobetsu", visitTime: "1~1.5시간", transport: "도야호에서 차로 15분", familyNote: "로프웨이 탑승, 전망대에서 호수+화산 파노라마", lat: 42.5390, lng: 140.8603 },
   ...getSelectedRestaurants().map(r => ({
     emoji: "🍽️",
@@ -80,7 +80,7 @@ const placeCategories: PlaceCategory[] = [
   ]},
   { title: "맛집", emoji: "🍜", items: [
     { name: "홋카이도 라멘", tip: "미소 라멘이 기본! 삿포로 스타일" },
-    { name: "카이세키 요리", tip: "료칸 석식으로 제공, 제철 해산물" },
+    { name: "호텔 뷔페", tip: "미야비테이·코한테이 모두 조석식 뷔페 포함" },
     { name: "소프트크림", tip: "홋카이도 우유로 만든 진한 맛. 어디서나 350엔 전후" },
     { name: "편의점 간식", tip: "세이코마트(홋카이도 한정 편의점) 꼭 가보기!" },
   ]},
