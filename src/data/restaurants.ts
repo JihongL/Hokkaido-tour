@@ -864,7 +864,7 @@ export function getTopRated(area?: AreaKey, limit = 5): Restaurant[] {
 /** 끼니별 추천 맛집 ID 매핑 */
 export const mealRecommendations: Record<string, string[]> = {
   "day1-lunch": ["d1l-01", "d1l-02", "d1l-03"],   // 공항: 에비소바, 키쿠요, 랏쿄
-  "day2-lunch": ["d2l-01", "d2l-02", "d2l-03"],   // 무로란: 노자키, 텐카츠, 하마카츠
+  "day2-lunch": ["d3l-02", "d3l-03", "d3l-01"],   // 소베쓰/도야호: 아푸타(확실), 카와나미, 피닉스
   "day3-lunch": ["d3l-01", "d3l-02", "d3l-03"],   // 도야호: 피닉스, 아푸타, 카와나미
   // day3-dinner: 호텔 뷔페 (토야 코한 테이)
   "day4-lunch": ["d4l-01", "d4l-02", "d4l-03"],   // 시코쓰호: 코토부키, 톤톤, 공항 이토
