@@ -153,7 +153,7 @@ const DayRouteMap = ({ dayNumber }: { dayNumber: number }) => {
   const bounds = L.latLngBounds(route.stops.map(s => [s.lat, s.lng] as [number, number]));
 
   return (
-    <div className="rounded-2xl overflow-hidden border border-border shadow-sm" style={{ height: 200 }}>
+    <div className="relative z-0 rounded-2xl overflow-hidden border border-border shadow-sm" style={{ height: 200 }}>
       <MapContainer
         bounds={bounds}
         boundsOptions={{ padding: [25, 25] }}
@@ -193,6 +193,7 @@ const typeConfig: Record<string, { icon: string; color: string }> = {
 
 const locationBadge: Record<string, string> = {
   "시코쓰호": "bg-purple-100 text-purple-800 border-purple-200",
+  "노보리베츠": "bg-rose-100 text-rose-800 border-rose-200",
   "노보리베츠 → 도야호": "bg-violet-100 text-violet-800 border-violet-200",
   "도야호": "bg-indigo-100 text-indigo-800 border-indigo-200",
   "신치토세": "bg-sky-100 text-sky-800 border-sky-200",
@@ -260,7 +261,7 @@ const TodayTab = () => {
     <div className="space-y-5">
       {/* ── Hero ── */}
       <AnimatePresence mode="wait">
-        {phase === "before" && (
+        {phase === "before" && selectedDay === -1 && (
           <motion.div
             key="hero-before"
             initial={{ opacity: 0, scale: 0.96 }}
@@ -589,8 +590,8 @@ const TodayTab = () => {
                     <p className="text-base font-bold text-foreground">파크 호텔 미야비테이</p>
                     <p className="text-sm text-muted-foreground">Noboribetsu, Hokkaido</p>
                   </div>
-                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-md border ${locationBadge["시코쓰호"]}`}>
-                    시코쓰호
+                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-md border ${locationBadge["노보리베츠"]}`}>
+                    노보리베츠
                   </span>
                 </div>
                 <div className="grid grid-cols-2 gap-2">

@@ -170,7 +170,7 @@ const MapTab = () => {
       </div>
 
       {/* ── Map ── */}
-      <div className="rounded-2xl overflow-hidden border border-border shadow-sm" style={{ height: "min(55vh, 400px)" }}>
+      <div className="relative z-0 rounded-2xl overflow-hidden border border-border shadow-sm" style={{ height: "min(55vh, 400px)" }}>
         <MapContainer
           center={[42.6, 141.3]}
           zoom={9}
