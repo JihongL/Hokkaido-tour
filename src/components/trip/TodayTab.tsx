@@ -6,6 +6,7 @@ import "leaflet/dist/leaflet.css";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 import { useWeatherShikotsu } from "@/hooks/useWeather";
+import { restaurants, mealRecommendations } from "@/data/restaurants";
 
 const TRIP_START = new Date("2026-05-03T00:00:00+09:00");
 const TRIP_END = new Date("2026-05-06T23:59:59+09:00");
@@ -844,9 +845,37 @@ const TodayTab = () => {
               }}
             >
               <p className="text-sm font-bold mb-2" style={{ color: "hsl(20, 85%, 45%)" }}>식사 안내</p>
-              {day.meals.map((m, i) => (
-                <p key={i} className="text-sm text-foreground leading-relaxed">{m}</p>
-              ))}
+              {day.meals.map((m, i) => {
+                const mealKey = m.includes("점심")
+                  ? `day${day.day}-lunch`
+                  : m.includes("저녁") && !m.includes("호텔") && !m.includes("기내")
+                    ? `day${day.day}-dinner`
+                    : null;
+                const recs = mealKey ? (mealRecommendations[mealKey] || []) : [];
+                const recList = recs.map(id => restaurants.find(r => r.id === id)).filter(Boolean);
+
+                return (
+                  <div key={i} className="mb-2 last:mb-0">
+                    <p className="text-sm text-foreground leading-relaxed">{m}</p>
+                    {recList.length > 0 && (
+                      <div className="mt-1.5 space-y-1.5">
+                        {recList.map(r => r && (
+                          <div key={r.id} className="flex items-center gap-2.5 bg-orange-50 border border-orange-200 rounded-xl px-3 py-2.5">
+                            <span className="text-lg">🍽️</span>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-1.5">
+                                <span className="text-base font-bold text-foreground truncate">{r.nameKr}</span>
+                                <span className="text-xs font-bold text-orange-600 bg-orange-100 px-1.5 py-0.5 rounded flex-shrink-0">★{r.rating}</span>
+                              </div>
+                              <p className="text-sm text-muted-foreground truncate">{r.representativeMenu}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </motion.div>
           </motion.div>
         )}

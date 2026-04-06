@@ -3,16 +3,18 @@ import { createPortal } from "react-dom";
 import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import { getSelectedRestaurants } from "@/data/restaurants";
 
 /* ── Types & Constants ── */
 
-type FilterKey = "all" | "관광지" | "온천" | "숙소" | "공항" | "기타";
+type FilterKey = "all" | "관광지" | "온천" | "숙소" | "공항" | "맛집" | "기타";
 
 const categoryFilters: { key: FilterKey; emoji: string; label: string }[] = [
   { key: "all", emoji: "📍", label: "전체" },
   { key: "관광지", emoji: "🏛️", label: "관광" },
   { key: "온천", emoji: "♨️", label: "온천" },
   { key: "숙소", emoji: "🏨", label: "숙소" },
+  { key: "맛집", emoji: "🍽️", label: "맛집" },
 ];
 
 function getFilterKey(category: string): FilterKey {
@@ -20,6 +22,7 @@ function getFilterKey(category: string): FilterKey {
   if (category === "온천") return "온천";
   if (category === "관광지") return "관광지";
   if (category === "공항") return "공항";
+  if (category === "맛집") return "맛집";
   return "기타";
 }
 
@@ -48,6 +51,19 @@ const places: MapPlace[] = [
   { emoji: "🏞️", name: "도야호", category: "관광지", description: "칼데라 호수, 나카지마 섬 전망", why: "홋카이도 3대 경관", address: "Lake Toya, Toyako", visitTime: "1~2시간", transport: "노보리베츠에서 차로 40분", familyNote: "호수 둘레 산책로, 유람선 가능", lat: 42.6100, lng: 140.8560 },
   { emoji: "🏨", name: "토야 코한 테이 (도야호)", category: "숙소", description: "도야호 호반 온천 호텔", why: "2박 숙소", address: "Toyako Onsen, Toyako", visitTime: "5/4~5/6", transport: "도야호에서 도보", familyNote: "호수뷰 대욕장, 뷔페 조식", lat: 42.5659, lng: 140.8259 },
   { emoji: "🚡", name: "우스산 로프웨이", category: "관광지", description: "활화산 전망대, 쇼와신잔 조망", why: "화산 지형 감상", address: "Mt. Usu Ropeway, Sobetsu", visitTime: "1~1.5시간", transport: "도야호에서 차로 15분", familyNote: "로프웨이 탑승, 전망대에서 호수+화산 파노라마", lat: 42.5390, lng: 140.8603 },
+  ...getSelectedRestaurants().map(r => ({
+    emoji: "🍽️",
+    name: r.nameKr,
+    category: "맛집",
+    description: `${r.genre} · ★${r.rating}`,
+    why: r.representativeMenu,
+    address: r.address,
+    visitTime: r.dayRecommendation?.join(", ") || "",
+    transport: r.priceRange || "",
+    familyNote: r.familyNote || "",
+    lat: r.lat!,
+    lng: r.lng!,
+  })),
 ];
 
 interface PlaceCategory {
