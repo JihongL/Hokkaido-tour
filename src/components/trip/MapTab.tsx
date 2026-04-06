@@ -59,6 +59,8 @@ const places: MapPlace[] = [
   { emoji: "🍦", name: "레이크힐 농장", category: "관광지", description: "목장 젤라토, 요테이산 뷰", why: "홋카이도 우유 젤라토", address: "Toyako-cho Hanawa, Hokkaido", visitTime: "30분~1시간", transport: "온천가에서 차 10분", familyNote: "무료 입장, 주차 무료", lat: 42.6155, lng: 140.7865 },
   { emoji: "🏛️", name: "서밋 기념관", category: "관광지", description: "G8 정상회담 원탁, 각국 선물 전시", why: "2008년 G8 서밋 개최지", address: "Toyako Onsen, 유람선 터미널", visitTime: "20~30분", transport: "온천가에서 도보", familyNote: "무료, 실내", lat: 42.5730, lng: 140.8430 },
   { emoji: "♨️", name: "오유누마 천연 족욕", category: "온천", description: "산에서 흘러내리는 온천수 족욕", why: "지옥계곡과 세트", address: "Noboribetsu Onsen, Oyunuma", visitTime: "20~30분", transport: "지옥계곡에서 도보 15분", familyNote: "무료, 타올 지참", lat: 42.4880, lng: 141.1520 },
+  { emoji: "🏖️", name: "톳카리쇼 전망대", category: "관광지", description: "해안 절벽 절경, 무로란 8경", why: "깎아지른 해안 절벽", address: "Muroran, Hokkaido", visitTime: "20~30분", transport: "지구곶에서 차 10분", familyNote: "전망대까지 짧은 거리, 무료", lat: 42.3100, lng: 140.9760 },
+  { emoji: "🌉", name: "하쿠초 대교", category: "관광지", description: "동일본 최대 현수교 1,380m", why: "드라이브로 통과 + 전망", address: "Muroran, Hokkaido", visitTime: "통과 5분", transport: "무료 통행", familyNote: "차에서 내리지 않아도 됨", lat: 42.3380, lng: 140.9550 },
   ...getSelectedRestaurants().map(r => ({
     emoji: "🍽️",
     name: r.nameKr,
