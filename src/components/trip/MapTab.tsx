@@ -47,7 +47,7 @@ const places: MapPlace[] = [
   { emoji: "♨️", name: "노보리베츠 온천가", category: "온천", description: "일본 최고 온천 중 하나", why: "다양한 수질의 온천 체험", address: "Noboribetsu Onsen", visitTime: "1~2시간", transport: "지옥계곡에서 도보", familyNote: "수건은 물에 담그지 않기! 10계명 셋째", lat: 42.4847, lng: 141.1558 },
   { emoji: "🏞️", name: "도야호", category: "관광지", description: "칼데라 호수, 나카지마 섬 전망", why: "홋카이도 3대 경관", address: "Lake Toya, Toyako", visitTime: "1~2시간", transport: "노보리베츠에서 차로 40분", familyNote: "호수 둘레 산책로, 유람선 가능", lat: 42.6100, lng: 140.8560 },
   { emoji: "🏨", name: "토야 코한 테이 (도야호)", category: "숙소", description: "도야호 호반 온천 호텔", why: "2박 숙소", address: "Toyako Onsen, Toyako", visitTime: "5/4~5/6", transport: "도야호에서 도보", familyNote: "호수뷰 대욕장, 뷔페 조식", lat: 42.5659, lng: 140.8259 },
-  { emoji: "🚡", name: "우스산 로프웨이", category: "관광지", description: "활화산 전망대, 쇼와신잔 조망", why: "화산 지형 감상", address: "Mt. Usu Ropeway, Sobetsu", visitTime: "1~1.5시간", transport: "도야호에서 차로 15분", familyNote: "로프웨이 탑승, 전망대에서 호수+화산 파노라마", lat: 42.5440, lng: 140.8390 },
+  { emoji: "🚡", name: "우스산 로프웨이", category: "관광지", description: "활화산 전망대, 쇼와신잔 조망", why: "화산 지형 감상", address: "Mt. Usu Ropeway, Sobetsu", visitTime: "1~1.5시간", transport: "도야호에서 차로 15분", familyNote: "로프웨이 탑승, 전망대에서 호수+화산 파노라마", lat: 42.5390, lng: 140.8603 },
 ];
 
 interface PlaceCategory {

@@ -81,7 +81,7 @@ const SosTab = () => {
             <h3 className="text-lg font-bold text-foreground mb-3">🏥 병원</h3>
             <div className="space-y-2.5">
               {[
-                { label: "노보리베츠 종합병원", number: "+81-143-85-2411", note: "Noboribetsu General Hospital" },
+                { label: "노보리베츠 종합병원 (JCHO)", number: "+81-143-80-1115", note: "Noboribetsu General Hospital" },
                 { label: "토야코 병원", number: "+81-142-75-3111", note: "Lake Toya area" },
               ].map((item, i) => (
                 <a
@@ -124,7 +124,7 @@ const SosTab = () => {
             <h3 className="text-lg font-bold text-foreground mb-3">🏨 호텔 · ✈️ 항공사</h3>
             <div className="space-y-2.5">
               {[
-                { label: "파크 호텔 미야비테이", number: "+81-143-84-2555" },
+                { label: "파크 호텔 미야비테이", number: "+81-143-84-2335" },
                 { label: "토야 코한 테이 (도야호)", number: "+81-142-75-2211" },
                 { label: "대한항공 고객센터", number: "1588-2001" },
                 { label: "대한항공 삿포로", number: "+81-11-231-1211" },
