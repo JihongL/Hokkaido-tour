@@ -814,7 +814,7 @@ const TodayTab = () => {
                         />
                       </div>
                       <div
-                        className="flex-1 rounded-xl p-3 transition-colors"
+                        className="flex-1 min-w-0 rounded-xl p-3 transition-colors"
                         style={item.type === "placeholder" ? {
                           background: "hsl(var(--secondary) / 0.2)",
                           border: "1.5px dashed hsl(var(--border))",
