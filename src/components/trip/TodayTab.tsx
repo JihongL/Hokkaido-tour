@@ -860,7 +860,13 @@ const TodayTab = () => {
                     {recList.length > 0 && (
                       <div className="mt-1.5 space-y-1.5">
                         {recList.map(r => r && (
-                          <div key={r.id} className="flex items-center gap-2.5 bg-orange-50 border border-orange-200 rounded-xl px-3 py-2.5">
+                          <a
+                            key={r.id}
+                            href={r.googleMapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(r.nameJa + " " + r.address)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2.5 bg-orange-50 border border-orange-200 rounded-xl px-3 py-2.5 active:scale-[0.98] transition-transform"
+                          >
                             <span className="text-lg">🍽️</span>
                             <div className="flex-1 min-w-0">
                               <div className="flex items-center gap-1.5">
@@ -869,7 +875,8 @@ const TodayTab = () => {
                               </div>
                               <p className="text-sm text-muted-foreground truncate">{r.representativeMenu}</p>
                             </div>
-                          </div>
+                            <span className="text-sm text-orange-500 flex-shrink-0">📍</span>
+                          </a>
                         ))}
                       </div>
                     )}
