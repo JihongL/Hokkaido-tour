@@ -94,7 +94,7 @@ export const restaurants: Restaurant[] = [
     familyFriendly: true,
     familyNote: "아이용 의자 있음, 새우맛이 진해 아이들도 좋아함",
     dayRecommendation: ["Day 1 도착", "Day 4 출발"],
-    lat: 42.7753, lng: 141.6926,
+    lat: 42.7877, lng: 141.6803,
   },
   {
     id: "cts-02",
@@ -109,7 +109,7 @@ export const restaurants: Restaurant[] = [
     familyFriendly: true,
     familyNote: "삿포로 미소라멘의 대표 맛집, 진하고 고소한 맛",
     dayRecommendation: ["Day 1 도착", "Day 4 출발"],
-    lat: 42.7754, lng: 141.6928,
+    lat: 42.788, lng: 141.6801,
   },
   {
     id: "cts-03",
@@ -124,7 +124,7 @@ export const restaurants: Restaurant[] = [
     familyFriendly: true,
     familyNote: "2025 타베로그 라멘 HOKKAIDO Top 100 선정",
     dayRecommendation: ["Day 1 도착", "Day 4 출발"],
-    lat: 42.7755, lng: 141.6924,
+    lat: 42.7879, lng: 141.6803,
   },
   {
     id: "cts-04",
@@ -237,7 +237,7 @@ export const restaurants: Restaurant[] = [
     familyFriendly: true,
     familyNote: "회전초밥이라 아이들이 좋아함, 한 접시씩 골라 먹기",
     dayRecommendation: ["Day 1 도착", "Day 4 출발"],
-    lat: 42.7751, lng: 141.693,
+    lat: 42.7874, lng: 141.6803,
   },
   {
     id: "cts-12",
@@ -271,7 +271,7 @@ export const restaurants: Restaurant[] = [
     familyFriendly: true,
     familyNote: "시코쓰호 명물 히메마스 전문, 아이도 먹을 수 있는 정식 있음",
     dayRecommendation: ["Day 1 점심", "Day 4 점심"],
-    lat: 42.7572, lng: 141.3492,
+    lat: 42.7734, lng: 141.404,
   },
   {
     id: "skts-02",
@@ -286,7 +286,7 @@ export const restaurants: Restaurant[] = [
     familyFriendly: true,
     familyNote: "뷔페라 골라 먹기 가능, 어르신/아이 모두 적합",
     dayRecommendation: ["Day 1 점심"],
-    lat: 42.7578, lng: 141.3486,
+    lat: 42.7738, lng: 141.4037,
   },
   {
     id: "skts-03",
@@ -316,7 +316,7 @@ export const restaurants: Restaurant[] = [
     familyFriendly: true,
     familyNote: "저렴하고 가볍게 먹기 좋음, 호수 주차장 근처",
     dayRecommendation: ["Day 1 점심", "Day 4 점심"],
-    lat: 42.7566, lng: 141.3496,
+    lat: 42.7731, lng: 141.4039,
   },
   {
     id: "skts-05",
@@ -489,7 +489,7 @@ export const restaurants: Restaurant[] = [
     familyFriendly: true,
     familyNote: "무로란 카레라멘의 원조, 가족 모두 먹기 좋은 맛",
     dayRecommendation: ["Day 2 점심"],
-    lat: 42.315, lng: 140.974,
+    lat: 42.3177, lng: 140.9703,
   },
   {
     id: "mrr-02",
@@ -518,7 +518,7 @@ export const restaurants: Restaurant[] = [
     familyFriendly: true,
     familyNote: "무로란 야키토리 대표점, 체인이라 가족 방문 가능",
     dayRecommendation: ["Day 2 점심/저녁"],
-    lat: 42.332, lng: 140.989,
+    lat: 42.3529, lng: 141.0162,
   },
   {
     id: "mrr-04",
@@ -546,7 +546,7 @@ export const restaurants: Restaurant[] = [
     familyFriendly: true,
     familyNote: "회전초밥이라 아이들 매우 좋아함, 점심 추천",
     dayRecommendation: ["Day 2 점심"],
-    lat: 42.331, lng: 140.988,
+    lat: 42.3494, lng: 141.0206,
   },
   {
     id: "mrr-06",
@@ -606,7 +606,7 @@ export const restaurants: Restaurant[] = [
     familyFriendly: true,
     familyNote: "목장 체험+젤라토, 아이들 최고 인기 스팟",
     dayRecommendation: ["Day 3 오전"],
-    lat: 42.62, lng: 140.81,
+    lat: 42.6155, lng: 140.7865,
   },
   {
     id: "tyk-02",
@@ -621,7 +621,7 @@ export const restaurants: Restaurant[] = [
     familyFriendly: true,
     familyNote: "1946년 창업 노포 양식당, 호수뷰, 가족 식사에 최적",
     dayRecommendation: ["Day 2 저녁", "Day 3 점심"],
-    lat: 42.566, lng: 140.826,
+    lat: 42.5652, lng: 140.819,
   },
   {
     id: "tyk-03",
@@ -635,7 +635,7 @@ export const restaurants: Restaurant[] = [
     familyFriendly: true,
     familyNote: "100엔 버섯국이 유명, 드라이브 중 간식/휴식에 최고",
     dayRecommendation: ["Day 3 이동 중"],
-    lat: 42.685, lng: 141.01,
+    lat: 42.6985, lng: 141.1276,
   },
   {
     id: "tyk-04",
@@ -649,7 +649,7 @@ export const restaurants: Restaurant[] = [
     familyFriendly: true,
     familyNote: "매운맛 조절 가능, 아이용 메뉴 있음",
     dayRecommendation: ["Day 2 저녁", "Day 3 점심"],
-    lat: 42.567, lng: 140.827,
+    lat: 42.5655, lng: 140.8232,
   },
   {
     id: "tyk-05",
@@ -663,7 +663,7 @@ export const restaurants: Restaurant[] = [
     familyFriendly: true,
     familyNote: "온천가 산책 중 디저트, 아이들 좋아함",
     dayRecommendation: ["Day 2 저녁 후", "Day 3"],
-    lat: 42.5665, lng: 140.8255,
+    lat: 42.5652, lng: 140.8185,
   },
   {
     id: "tyk-06",
@@ -677,7 +677,7 @@ export const restaurants: Restaurant[] = [
     familyFriendly: true,
     familyNote: "피자/파스타라 아이들 매우 좋아함, 캐주얼 분위기",
     dayRecommendation: ["Day 2 저녁", "Day 3 점심"],
-    lat: 42.5668, lng: 140.8262,
+    lat: 42.565, lng: 140.8227,
   },
   {
     id: "tyk-07",
