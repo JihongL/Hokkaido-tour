@@ -20,6 +20,13 @@ interface ScheduleItem {
   type: "flight" | "move" | "food" | "stay" | "activity" | "placeholder";
 }
 
+interface RouteStop {
+  name: string;
+  emoji: string;
+  lat: number;
+  lng: number;
+}
+
 interface DayOption {
   id: string;
   emoji: string;
@@ -30,6 +37,7 @@ interface DayOption {
   meals: string[];
   parentTip: string;
   preparation: string[];
+  stops?: RouteStop[];
 }
 
 interface DayData {
@@ -97,6 +105,12 @@ const days: DayData[] = [
         label: "여유로운 도야호",
         subtitle: "호수 유람 · 젤라토 · 족욕",
         location: "도야호",
+        stops: [
+          { name: "토야 코한 테이", emoji: "🏨", lat: 42.5659, lng: 140.8259 },
+          { name: "사이로 전망대", emoji: "🏔️", lat: 42.6040, lng: 140.7980 },
+          { name: "레이크힐 농장", emoji: "🍦", lat: 42.6155, lng: 140.7865 },
+          { name: "유람선", emoji: "🚢", lat: 42.5730, lng: 140.8430 },
+        ],
         schedule: [
           { time: "08:00", activity: "조식", detail: "호텔 뷔페", type: "food" },
           { time: "09:30", activity: "사이로 전망대", detail: "도야호+우스산+요테이산 파노라마 · 무료 · 차 10분", type: "activity" },
@@ -118,6 +132,12 @@ const days: DayData[] = [
         label: "미니후지 요테이산",
         subtitle: "니세코 드라이브 · 양갱마을 · 요테이뷰",
         location: "도야호 → 니세코",
+        stops: [
+          { name: "토야 코한 테이", emoji: "🏨", lat: 42.5659, lng: 140.8259 },
+          { name: "사이로 전망대", emoji: "🏔️", lat: 42.6040, lng: 140.7980 },
+          { name: "후키다시 공원", emoji: "💧", lat: 42.7640, lng: 140.5780 },
+          { name: "레이크힐 농장", emoji: "🍦", lat: 42.6155, lng: 140.7865 },
+        ],
         schedule: [
           { time: "08:00", activity: "조식", detail: "호텔 뷔페", type: "food" },
           { time: "09:00", activity: "사이로 전망대", detail: "도야호+요테이산 파노라마 · 무료 · 차 10분", type: "activity" },
@@ -140,6 +160,12 @@ const days: DayData[] = [
         label: "태평양뷰 무로란",
         subtitle: "지구곶 절경 · 무로란야키토리",
         location: "도야호 → 무로란",
+        stops: [
+          { name: "토야 코한 테이", emoji: "🏨", lat: 42.5659, lng: 140.8259 },
+          { name: "지구곶", emoji: "🌏", lat: 42.2970, lng: 140.9750 },
+          { name: "토키카라모이", emoji: "🪨", lat: 42.3110, lng: 140.9640 },
+          { name: "미타라 무로란", emoji: "🛒", lat: 42.3370, lng: 140.9490 },
+        ],
         schedule: [
           { time: "08:00", activity: "조식", detail: "호텔 뷔페", type: "food" },
           { time: "09:00", activity: "무로란 방면 출발", detail: "도야호~무로란 약 1시간", type: "move" },
@@ -222,15 +248,18 @@ function createEmojiIcon(emoji: string) {
   });
 }
 
-const DayRouteMap = ({ dayNumber }: { dayNumber: number }) => {
+const DayRouteMap = ({ dayNumber, overrideStops }: { dayNumber: number; overrideStops?: RouteStop[] }) => {
   const route = dayRoutes.find(r => r.day === dayNumber);
-  if (!route || route.stops.length === 0) return null;
+  const stops = overrideStops ?? route?.stops;
+  const color = route?.color ?? "#6B8EC4";
+  if (!stops || stops.length === 0) return null;
 
-  const bounds = L.latLngBounds(route.stops.map(s => [s.lat, s.lng] as [number, number]));
+  const bounds = L.latLngBounds(stops.map(s => [s.lat, s.lng] as [number, number]));
 
   return (
     <div className="relative z-0 rounded-2xl overflow-hidden border border-border shadow-sm" style={{ height: 200 }}>
       <MapContainer
+        key={stops.map(s => s.name).join(",")}
         bounds={bounds}
         boundsOptions={{ padding: [25, 25] }}
         style={{ height: "100%", width: "100%" }}
@@ -242,7 +271,7 @@ const DayRouteMap = ({ dayNumber }: { dayNumber: number }) => {
         attributionControl={false}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        {route.stops.map((stop, i) => (
+        {stops.map((stop, i) => (
           <Marker
             key={i}
             position={[stop.lat, stop.lng]}
@@ -250,8 +279,8 @@ const DayRouteMap = ({ dayNumber }: { dayNumber: number }) => {
           />
         ))}
         <Polyline
-          positions={route.stops.map(s => [s.lat, s.lng] as [number, number])}
-          pathOptions={{ color: route.color, weight: 3, opacity: 0.8, dashArray: "6 4" }}
+          positions={stops.map(s => [s.lat, s.lng] as [number, number])}
+          pathOptions={{ color, weight: 3, opacity: 0.8, dashArray: "6 4" }}
         />
       </MapContainer>
     </div>
@@ -891,7 +920,7 @@ const TodayTab = () => {
 
             {/* Day route map */}
             <motion.div variants={contentVariants} custom={0.8}>
-              <DayRouteMap dayNumber={effectiveDay.day} />
+              <DayRouteMap dayNumber={effectiveDay.day} overrideStops={activeOption?.stops} />
             </motion.div>
 
             {/* Parent tip */}
