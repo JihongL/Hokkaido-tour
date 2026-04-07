@@ -42,7 +42,6 @@ export type AreaKey =
   | "shinchitose"
   | "shikotsu"
   | "noboribetsu"
-  | "muroran"
   | "toyako";
 
 export interface AreaInfo {
@@ -74,13 +73,6 @@ export const areas: AreaInfo[] = [
     nameKr: "노보리베츠/노보리베츠 온센",
     dayLabel: "Day 1 저녁 ~ Day 2 아침",
     description: "온천마을 식당가, 지옥골 근처 먹거리",
-  },
-  {
-    key: "muroran",
-    nameJa: "室蘭",
-    nameKr: "무로란",
-    dayLabel: "Day 2 점심",
-    description: "지구곶 근처, 무로란야키토리/카레라멘이 명물",
   },
   {
     key: "toyako",
@@ -184,93 +176,35 @@ export const restaurants: Restaurant[] = [
   },
 
   // ============================================================
-  // 끼니 2. Day 2 점심 — 무로란/지구곶 근처
+  // 끼니 2. Day 2 점심 — 소베쓰/도야호 (소베쓰공원~우스산 동선)
   // ============================================================
   {
     id: "d2l-01",
-    nameJa: "乃ざ喜",
-    nameKr: "노자키",
-    area: "muroran",
-    tabelogUrl: "https://tabelog.com/hokkaido/A0108/A010803/1006608/",
-    rating: 3.45,
-    reviewCount: 159,
-    genre: "스키야키/샤브샤브",
-    representativeMenu: "니쿠나베 돼지 정식 ¥1,050 / 니쿠나베 소 정식 ¥1,000~¥1,700",
-    address: "北海道室蘭市中央町2-3-2",
-    phone: "0143-24-4121",
-    businessHours: "월·수~일 11:30~13:30, 17:00~20:30",
-    closedDays: "화요일",
-    totalSeats: 30,
-    privateRoom: "있음 (최대 30명 수용)",
-    seatType: "카운터석, 테이블석, 좌식",
-    reservable: "전화 예약 가능",
+    nameJa: "湖の膳舎 なかむら",
+    nameKr: "코노젠샤 나카무라",
+    area: "toyako",
+    tabelogUrl: "https://tabelog.com/hokkaido/A0108/A010801/1075046/",
+    rating: 3.13,
+    reviewCount: 4,
+    genre: "일식 (코스요리)",
+    representativeMenu: "런치 코스 ¥3,300 / 스페셜 코스 ¥5,500",
+    address: "北海道虻田郡洞爺湖町洞爺湖温泉186-85",
+    phone: "080-9269-2578",
+    businessHours: "화~토 11:00~16:00",
+    closedDays: "일·월요일 (GW 등 공휴일은 영업)",
+    totalSeats: 16,
+    privateRoom: "없음 (대절 가능)",
+    seatType: "카운터 6석, 테이블 4석, 이로리(화로) 4~6석",
+    reservable: "전화/TableCheck 예약 필수",
     parking: "있음",
-    priceRange: "점심 ~¥999 / 저녁 ¥1,000~¥1,999",
-    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=乃ざ喜+室蘭市中央町2-3-2",
-    seniorNote: "무로란 대표 스키야키 노포. 개인실 30명까지 가능해 10명 그룹 최적. 돼지고기 니쿠나베가 지역 명물",
-    lat: 42.3177,
-    lng: 140.9721,
-    gwStatus: "check",
+    priceRange: "¥3,000~¥5,999",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=湖の膳舎なかむら+洞爺湖温泉186-85",
+    seniorNote: "⭐ 5/4 예약 확정. 도쿄 나카노에서 이전한 본격 일식점. 도야호 현지 식재료 코스요리. 16석 소규모로 10명이면 사실상 대절. 현금만 가능",
+    lat: 42.5685,
+    lng: 140.8037,
+    gwStatus: "confirmed",
     familyFriendly: true,
-    familyNote: "무로란 대표 스키야키 노포. 개인실 30명까지 가능해 10명 그룹 최적. 돼지고기 니쿠나베가 지역 명물",
-    dayRecommendation: ["Day 2 점심"],
-  },
-  {
-    id: "d2l-02",
-    nameJa: "天勝",
-    nameKr: "텐카츠",
-    area: "muroran",
-    tabelogUrl: "https://tabelog.com/hokkaido/A0108/A010803/1005942/",
-    rating: 3.41,
-    reviewCount: 236,
-    genre: "텐동/텐푸라/소바",
-    representativeMenu: "텐동 (튀김덮밥) / 텐푸라 정식 ¥1,000~¥1,500",
-    address: "北海道室蘭市中央町2-3-16",
-    phone: "0143-22-5564",
-    businessHours: "월~수·금 11:00~18:00 / 토일공휴 11:00~18:30",
-    closedDays: "목요일",
-    totalSeats: 72,
-    privateRoom: "없음",
-    seatType: "카운터 18석, 테이블 12석(3개×4인), 소좌식 42석(7개×6인)",
-    reservable: "불가",
-    parking: "있음 (지정 주차장 9대)",
-    priceRange: "¥1,000~¥1,999",
-    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=天勝+室蘭市中央町2-3-16",
-    seniorNote: "1920년 창업 105년 역사 노포. 72석으로 넉넉하고 텐푸라/소바 메뉴가 어르신 입맛에 맞음. 주차 9대",
-    lat: 42.3170,
-    lng: 140.9720,
-    gwStatus: "check",
-    familyFriendly: true,
-    familyNote: "1920년 창업 105년 역사 노포. 72석으로 넉넉하고 텐푸라/소바 메뉴가 어르신 입맛에 맞음. 주차 9대",
-    dayRecommendation: ["Day 2 점심"],
-  },
-  {
-    id: "d2l-03",
-    nameJa: "浜勝やきとり店",
-    nameKr: "하마카츠 야키토리점",
-    area: "muroran",
-    tabelogUrl: "https://tabelog.com/hokkaido/A0108/A010803/1016886/",
-    rating: 3.19,
-    reviewCount: 30,
-    genre: "야키토리 (무로란식 돼지꼬치)",
-    representativeMenu: "무로란 야키토리 세트 + 카레라멘 ¥1,000~¥1,500",
-    address: "北海道室蘭市母恋北町2-9-4",
-    phone: "0143-22-8908",
-    businessHours: "월~토 11:30~14:00, 16:30~23:00",
-    closedDays: "일요일",
-    totalSeats: 58,
-    privateRoom: "없음",
-    seatType: "테이블석 중심",
-    reservable: "전화 예약 가능",
-    parking: "있음 (2대)",
-    priceRange: "¥1,000~¥1,999",
-    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=浜勝やきとり店+室蘭市母恋北町2-9-4",
-    seniorNote: "1968년 개업 무로란야키토리(돼지꼬치+겨자) 노포. 58석으로 10명 수용 가능. 카레라멘과 야키토리 세트가 지역색 만점",
-    lat: 42.3210,
-    lng: 140.9560,
-    gwStatus: "check",
-    familyFriendly: true,
-    familyNote: "1968년 개업 무로란야키토리(돼지꼬치+겨자) 노포. 58석으로 10명 수용 가능. 카레라멘과 야키토리 세트가 지역색 만점",
+    familyNote: "5/4 예약 확정. 도야호 현지 식재료 일식 코스. 16석 대절급. 현금만 가능",
     dayRecommendation: ["Day 2 점심"],
   },
 
@@ -547,99 +481,6 @@ export const restaurants: Restaurant[] = [
     dayRecommendation: ["Day 4 점심"],
   },
 
-  // ============================================================
-  // GW 백업 맛집 — Day 2 점심 (무로란) 백업 3곳
-  // ============================================================
-  {
-    id: "d2l-b1",
-    nameJa: "びっくりドンキー 室蘭モルエ中島店",
-    nameKr: "빗쿠리동키 무로란 모루에나카지마점",
-    area: "muroran",
-    tabelogUrl: "https://tabelog.com/hokkaido/A0108/A010803/1001022/",
-    rating: 3.05,
-    reviewCount: 80,
-    genre: "함박스테이크 (체인)",
-    representativeMenu: "레귤러 버그디쉬 300g ¥869 / 치즈 버그디쉬 ¥979",
-    address: "北海道室蘭市中島本町1丁目3-8 モルエ中島",
-    phone: "0143-42-2252",
-    businessHours: "08:00~24:00 (L.O. 23:30)",
-    closedDays: "연중무휴",
-    totalSeats: 150,
-    privateRoom: "없음",
-    seatType: "테이블석, 소파석",
-    reservable: "불가 (선착순)",
-    parking: "있음 (모루에 중도 대형 주차장 공용)",
-    priceRange: "¥800~¥1,499",
-    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=びっくりドンキー+室蘭モルエ中島店",
-    seniorNote: "2026년 3월 이전 오픈 신점포. 150석 대형 체인으로 GW에도 확실히 영업. 함박스테이크는 어르신도 부담 없는 메뉴. 대형 주차장 완비",
-    lat: 42.3340,
-    lng: 140.9880,
-    gwStatus: "confirmed",
-    isBackup: true,
-    familyFriendly: true,
-    familyNote: "150석 대형 체인으로 GW에도 확실히 영업. 함박스테이크는 어르신도 부담 없는 메뉴",
-    dayRecommendation: ["Day 2 점심"],
-  },
-  {
-    id: "d2l-b2",
-    nameJa: "道の駅 みたら室蘭 くじら食堂",
-    nameKr: "미치노에키 미타라무로란 쿠지라식당",
-    area: "muroran",
-    tabelogUrl: "https://tabelog.com/hokkaido/A0108/A010803/1061369/",
-    rating: 3.10,
-    reviewCount: 15,
-    genre: "카레라멘/야키토리동 (도로 휴게소)",
-    representativeMenu: "무로타코 세트(카레라멘+미니 야키토리동) ¥1,100 / 카레라멘 ¥820",
-    address: "北海道室蘭市祝津町4-16-15 道の駅みたら室蘭内",
-    phone: "0143-26-2030",
-    businessHours: "4~10월: 평일 10:00~15:00, 토일공휴 10:00~18:00",
-    closedDays: "연중무휴 (도로 휴게소)",
-    totalSeats: 40,
-    privateRoom: "없음",
-    seatType: "테이블석",
-    reservable: "불가",
-    parking: "있음 (보통차 100대, 대형차 7대)",
-    priceRange: "~¥1,300",
-    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=道の駅+みたら室蘭+くじら食堂",
-    seniorNote: "도로 휴게소 내 식당으로 GW 확실 영업. 무로란 카레라멘+야키토리를 한번에 맛볼 수 있는 무로타코 세트가 인기. 백조대교 조망. 대형 주차장",
-    lat: 42.3370,
-    lng: 140.9490,
-    gwStatus: "confirmed",
-    isBackup: true,
-    familyFriendly: true,
-    familyNote: "도로 휴게소 내 식당으로 GW 확실 영업. 무로란 명물 세트 메뉴. 대형 주차장",
-    dayRecommendation: ["Day 2 점심"],
-  },
-  {
-    id: "d2l-b3",
-    nameJa: "回転寿司ちょいす 室蘭中央店",
-    nameKr: "회전초밥 초이스 무로란추오점",
-    area: "muroran",
-    tabelogUrl: "https://tabelog.com/hokkaido/A0108/A010803/1009726/",
-    rating: 3.15,
-    reviewCount: 40,
-    genre: "회전초밥",
-    representativeMenu: "지역산 네타 스시 / 런치 세트 ¥1,000~¥1,500",
-    address: "北海道室蘭市中央町2丁目2",
-    phone: "0143-22-9111",
-    businessHours: "11:00~21:00",
-    closedDays: "부정기 (거의 무휴)",
-    totalSeats: 60,
-    privateRoom: "없음",
-    seatType: "카운터석, 테이블석, 소좌식",
-    reservable: "불가",
-    parking: "있음",
-    priceRange: "¥1,000~¥2,000",
-    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=回転寿司ちょいす+室蘭中央店",
-    seniorNote: "홋카이도 로컬 회전초밥 체인. 60석으로 10명 수용 가능. 홋카이도산 신선 네타가 강점. 지구곶~도야호 이동 경로상에 위치",
-    lat: 42.3155,
-    lng: 140.9710,
-    gwStatus: "likely",
-    isBackup: true,
-    familyFriendly: true,
-    familyNote: "홋카이도 로컬 회전초밥 체인. 60석, 신선한 네타",
-    dayRecommendation: ["Day 2 점심"],
-  },
 
   // ============================================================
   // GW 백업 맛집 — Day 3 점심 (도야호) 백업 2곳
@@ -864,7 +705,7 @@ export function getTopRated(area?: AreaKey, limit = 5): Restaurant[] {
 /** 끼니별 추천 맛집 ID 매핑 */
 export const mealRecommendations: Record<string, string[]> = {
   "day1-lunch": ["d1l-01", "d1l-02", "d1l-03"],   // 공항: 에비소바, 키쿠요, 랏쿄
-  "day2-lunch": ["d3l-02", "d3l-03", "d3l-01"],   // 소베쓰/도야호: 아푸타(확실), 카와나미, 피닉스
+  "day2-lunch": ["d2l-01"],                         // 도야호: 코노젠샤 나카무라 (5/4 예약 확정)
   "day3-lunch": ["d3l-01", "d3l-02", "d3l-03"],   // 도야호: 피닉스, 아푸타, 카와나미
   // day3-dinner: 호텔 뷔페 (토야 코한 테이)
   "day4-lunch": ["d4l-01", "d4l-02", "d4l-03"],   // 시코쓰호: 코토부키, 톤톤, 공항 이토
@@ -872,7 +713,7 @@ export const mealRecommendations: Record<string, string[]> = {
 
 /** GW 백업 맛집 ID 매핑 */
 export const gwBackupRecommendations: Record<string, string[]> = {
-  "day2-lunch": ["d2l-b1", "d2l-b2", "d2l-b3"],   // 무로란: 빗쿠리동키, 미타라쿠지라, 초이스
+  // day2-lunch: 예약 확정으로 백업 불필요
   "day3-lunch": ["d3l-b1", "d3l-b2"],              // 도야호: 만세이카쿠뷔페, 보요테이
   "day3-dinner": ["d3d-b1", "d3d-b2"],             // 도야호: 잇폰테이, 만세이카쿠석식
   "day4-lunch": ["d4l-b1", "d4l-b2"],              // 치토세: ANA호텔, 칸타로공항
@@ -881,7 +722,7 @@ export const gwBackupRecommendations: Record<string, string[]> = {
 /** MapTab용 선별 맛집 ID */
 export const SELECTED_RESTAURANT_IDS = new Set([
   "d1l-01", "d1l-02", "d1l-03",
-  "d2l-01", "d2l-02", "d2l-03",
+  "d2l-01",
   "d3l-01", "d3l-02", "d3l-03",
   "d3d-01", "d3d-02", "d3d-03",
   "d4l-01", "d4l-02", "d4l-03",

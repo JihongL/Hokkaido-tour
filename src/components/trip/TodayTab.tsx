@@ -20,6 +20,18 @@ interface ScheduleItem {
   type: "flight" | "move" | "food" | "stay" | "activity" | "placeholder";
 }
 
+interface DayOption {
+  id: string;
+  emoji: string;
+  label: string;
+  subtitle: string;
+  location: string;
+  schedule: ScheduleItem[];
+  meals: string[];
+  parentTip: string;
+  preparation: string[];
+}
+
 interface DayData {
   day: number;
   date: string;
@@ -30,6 +42,7 @@ interface DayData {
   meals: string[];
   parentTip: string;
   preparation: string[];
+  options?: DayOption[];
 }
 
 const days: DayData[] = [
@@ -71,22 +84,79 @@ const days: DayData[] = [
     preparation: ["온천 타올", "카메라", "편한 신발"],
   },
   {
-    day: 3, date: "5월 5일", weekday: "화", title: "도야호 여유 관광",
+    day: 3, date: "5월 5일", weekday: "화", title: "일정 미정 (3개 옵션)",
     location: "도야호",
-    schedule: [
-      { time: "08:00", activity: "조식", detail: "호텔 뷔페", type: "food" },
-      { time: "09:30", activity: "사이로 전망대", detail: "도야호+우스산+요테이산 파노라마 · 무료 · 차 10분", type: "activity" },
-      { time: "10:30", activity: "레이크힐 농장", detail: "목장 젤라토 · 요테이산 뷰 · 무료 · 차 5분", type: "activity" },
-      { time: "11:30", activity: "도야호 유람선", detail: "나카시마 순환 50분 · 성인 1,800엔", type: "activity" },
-      { time: "12:30", activity: "점심", detail: "현지 식당", type: "food" },
-      { time: "14:00", activity: "호숫가 산책", detail: "도류노유 족욕 · 조각공원 · 무료", type: "activity" },
-      { time: "15:30", activity: "호텔 휴식 & 온천", detail: "토야 코한 테이 대욕장", type: "activity" },
-      { time: "18:00", activity: "석식", detail: "호텔 뷔페", type: "food" },
-      { time: "20:45", activity: "도야호 불꽃놀이", detail: "호숫가에서 관람 · 20:45~21:05", type: "activity" },
+    schedule: [],
+    meals: [],
+    parentTip: "",
+    preparation: [],
+    options: [
+      {
+        id: "toya-relax",
+        emoji: "🛶",
+        label: "여유로운 도야호",
+        subtitle: "호수 유람 · 젤라토 · 족욕",
+        location: "도야호",
+        schedule: [
+          { time: "08:00", activity: "조식", detail: "호텔 뷔페", type: "food" },
+          { time: "09:30", activity: "사이로 전망대", detail: "도야호+우스산+요테이산 파노라마 · 무료 · 차 10분", type: "activity" },
+          { time: "10:30", activity: "레이크힐 농장", detail: "목장 젤라토 · 요테이산 뷰 · 무료 · 차 5분", type: "activity" },
+          { time: "11:30", activity: "도야호 유람선", detail: "나카시마 순환 50분 · 성인 1,800엔", type: "activity" },
+          { time: "12:30", activity: "점심", detail: "현지 식당", type: "food" },
+          { time: "14:00", activity: "호숫가 산책", detail: "도류노유 족욕 · 조각공원 · 무료", type: "activity" },
+          { time: "15:30", activity: "호텔 휴식 & 온천", detail: "토야 코한 테이 대욕장", type: "activity" },
+          { time: "18:00", activity: "석식", detail: "호텔 뷔페", type: "food" },
+          { time: "20:45", activity: "도야호 불꽃놀이", detail: "호숫가에서 관람 · 20:45~21:05", type: "activity" },
+        ],
+        meals: ["조식: 호텔 뷔페", "점심: 현지 식당", "저녁: 토야 코한 테이 호텔 뷔페"],
+        parentTip: "전망대, 목장 젤라토, 유람선! 오후는 여유롭게 호숫가 족욕과 산책, 온천.",
+        preparation: ["편한 옷", "카메라", "모자/선크림"],
+      },
+      {
+        id: "yotei",
+        emoji: "🗻",
+        label: "미니후지 요테이산",
+        subtitle: "니세코 드라이브 · 양갱마을 · 요테이뷰",
+        location: "도야호 → 니세코",
+        schedule: [
+          { time: "08:00", activity: "조식", detail: "호텔 뷔페", type: "food" },
+          { time: "09:00", activity: "사이로 전망대", detail: "도야호+요테이산 파노라마 · 무료 · 차 10분", type: "activity" },
+          { time: "10:00", activity: "요테이산 방면 드라이브", detail: "도야호~니세코 루트 · 약 40분", type: "move" },
+          { time: "10:40", activity: "마코마나이/후키다시 공원", detail: "요테이산 용천수 · 무료 · 미니후지 포토스팟", type: "activity" },
+          { time: "12:00", activity: "점심", detail: "니세코/마코마나이 지역 식당", type: "food" },
+          { time: "13:30", activity: "레이크힐 농장", detail: "목장 젤라토 · 요테이산 뷰 · 무료", type: "activity" },
+          { time: "14:30", activity: "호텔 복귀", detail: "차 20분", type: "move" },
+          { time: "15:00", activity: "호텔 휴식 & 온천", detail: "토야 코한 테이 대욕장", type: "activity" },
+          { time: "18:00", activity: "석식", detail: "호텔 뷔페", type: "food" },
+          { time: "20:45", activity: "도야호 불꽃놀이", detail: "호숫가에서 관람 · 20:45~21:05", type: "activity" },
+        ],
+        meals: ["조식: 호텔 뷔페", "점심: 니세코 지역 식당", "저녁: 토야 코한 테이 호텔 뷔페"],
+        parentTip: "홋카이도의 후지산! 요테이산 용천수 공원에서 인생샷, 니세코 드라이브 후 젤라토.",
+        preparation: ["편한 옷", "카메라", "모자/선크림"],
+      },
+      {
+        id: "muroran",
+        emoji: "🌊",
+        label: "태평양뷰 무로란",
+        subtitle: "지구곶 절경 · 무로란야키토리",
+        location: "도야호 → 무로란",
+        schedule: [
+          { time: "08:00", activity: "조식", detail: "호텔 뷔페", type: "food" },
+          { time: "09:00", activity: "무로란 방면 출발", detail: "도야호~무로란 약 1시간", type: "move" },
+          { time: "10:00", activity: "지구곶 전망대", detail: "태평양 수평선 270도 파노라마 · 무료 · 지구가 둥글다!", type: "activity" },
+          { time: "11:00", activity: "토키카라모이 해안", detail: "기암절벽 산책로 · 무료 · 차 5분", type: "activity" },
+          { time: "12:00", activity: "점심", detail: "무로란 야키토리/카레라멘", type: "food" },
+          { time: "13:30", activity: "미타라 무로란 (도로 휴게소)", detail: "백조대교 조망 · 기념품 · 차 10분", type: "activity" },
+          { time: "14:30", activity: "호텔 복귀", detail: "무로란~도야호 약 1시간", type: "move" },
+          { time: "15:30", activity: "호텔 휴식 & 온천", detail: "토야 코한 테이 대욕장", type: "activity" },
+          { time: "18:00", activity: "석식", detail: "호텔 뷔페", type: "food" },
+          { time: "20:45", activity: "도야호 불꽃놀이", detail: "호숫가에서 관람 · 20:45~21:05", type: "activity" },
+        ],
+        meals: ["조식: 호텔 뷔페", "점심: 무로란 야키토리/카레라멘", "저녁: 토야 코한 테이 호텔 뷔페"],
+        parentTip: "지구가 둥글다는 걸 눈으로! 지구곶 절경 후 무로란 명물 돼지꼬치 야키토리 점심.",
+        preparation: ["편한 신발", "카메라", "바람막이 (해안 바람)"],
+      },
     ],
-    meals: ["조식: 호텔 뷔페", "점심: 현지 식당", "저녁: 토야 코한 테이 호텔 뷔페"],
-    parentTip: "전망대, 목장 젤라토, 유람선! 오후는 여유롭게 호숫가 족욕과 산책, 온천.",
-    preparation: ["편한 옷", "카메라", "모자/선크림"],
   },
   {
     day: 4, date: "5월 6일", weekday: "수", title: "시코쓰호 & 귀국",
@@ -230,7 +300,14 @@ const TodayTab = () => {
   }, []);
 
   const [selectedDay, setSelectedDay] = useState(phase === "before" ? -1 : todayDayIndex);
+  const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
   const day = selectedDay >= 0 ? days[selectedDay] : null;
+
+  // Resolve effective day data: if day has options, use the selected option's fields
+  const activeOption = day?.options?.find(o => o.id === selectedOptionId) ?? day?.options?.[0] ?? null;
+  const effectiveDay = day && day.options && activeOption
+    ? { ...day, title: activeOption.label, location: activeOption.location, schedule: activeOption.schedule, meals: activeOption.meals, parentTip: activeOption.parentTip, preparation: activeOption.preparation }
+    : day;
 
   const { data: weather } = useWeatherShikotsu();
 
@@ -336,9 +413,9 @@ const TodayTab = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium opacity-80 tracking-wide">
-                    Day {day.day} · {day.location}
+                    Day {effectiveDay.day} · {effectiveDay.location}
                   </p>
-                  <h2 className="text-xl font-bold mt-1">{day.title}</h2>
+                  <h2 className="text-xl font-bold mt-1">{effectiveDay.title}</h2>
                 </div>
                 <div className="text-right">
                   <p className="text-3xl">{weather?.current.icon || "☀️"}</p>
@@ -645,9 +722,9 @@ const TodayTab = () => {
         )}
 
         {/* ── Day 1~4 ── */}
-        {day && (
+        {effectiveDay && (
           <motion.div
-            key={`day-${selectedDay}`}
+            key={`day-${selectedDay}-${selectedOptionId}`}
             initial="hidden"
             animate="visible"
             exit="exit"
@@ -656,7 +733,7 @@ const TodayTab = () => {
             {/* Hotel card — during trip */}
             {phase === "during" && (
               <>
-                {day.day === 1 && (
+                {effectiveDay.day === 1 && (
                   <motion.div variants={contentVariants} custom={0} className="card-base flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "hsl(270, 50%, 92%)" }}>
                       <span className="text-xl">🏨</span>
@@ -667,7 +744,7 @@ const TodayTab = () => {
                     </div>
                   </motion.div>
                 )}
-                {day.day === 2 && (
+                {effectiveDay.day === 2 && (
                   <motion.div variants={contentVariants} custom={0} className="space-y-2">
                     <div className="card-base flex items-center gap-3 opacity-50">
                       <span className="text-xl">🏨</span>
@@ -688,7 +765,7 @@ const TodayTab = () => {
                     </div>
                   </motion.div>
                 )}
-                {day.day >= 3 && (
+                {effectiveDay.day >= 3 && (
                   <motion.div variants={contentVariants} custom={0} className="card-base flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "hsl(270, 40%, 93%)" }}>
                       <span className="text-xl">🏨</span>
@@ -696,7 +773,7 @@ const TodayTab = () => {
                     <div className="flex-1">
                       <p className="text-base font-bold text-foreground">토야 코한 테이</p>
                       <p className="text-sm text-muted-foreground">도야호 온천, Toyako</p>
-                      {day.day === 4 && <p className="text-xs font-semibold mt-1" style={{ color: "hsl(var(--destructive))" }}>10:00 체크아웃 · 짐 정리 잊지 마세요!</p>}
+                      {effectiveDay.day === 4 && <p className="text-xs font-semibold mt-1" style={{ color: "hsl(var(--destructive))" }}>10:00 체크아웃 · 짐 정리 잊지 마세요!</p>}
                     </div>
                   </motion.div>
                 )}
@@ -767,9 +844,54 @@ const TodayTab = () => {
               </motion.div>
             )}
 
+            {/* Day 3 option selector */}
+            {day?.options && (
+              <motion.div variants={contentVariants} custom={0.6} className="space-y-2">
+                <p className="text-xs font-bold text-muted-foreground tracking-wider uppercase px-1">일정 옵션 선택</p>
+                <div className="grid gap-2">
+                  {day.options.map((opt) => {
+                    const isActive = (selectedOptionId ?? day.options![0].id) === opt.id;
+                    return (
+                      <motion.button
+                        key={opt.id}
+                        onClick={() => setSelectedOptionId(opt.id)}
+                        whileTap={{ scale: 0.98 }}
+                        className="text-left rounded-2xl p-3.5 transition-all"
+                        style={{
+                          background: isActive ? "hsl(var(--primary) / 0.08)" : "hsl(var(--card))",
+                          border: isActive ? "2px solid hsl(var(--primary))" : "1.5px solid hsl(var(--border))",
+                          boxShadow: isActive ? "0 2px 12px hsl(var(--primary) / 0.12)" : "none",
+                        }}
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-2xl">{opt.emoji}</span>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-base font-bold text-foreground">{opt.label}</p>
+                            <p className="text-sm text-muted-foreground">{opt.subtitle}</p>
+                          </div>
+                          {isActive && (
+                            <motion.div
+                              initial={{ scale: 0 }}
+                              animate={{ scale: 1 }}
+                              className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
+                              style={{ background: "hsl(var(--primary))" }}
+                            >
+                              <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+                                <path d="M3 7L6 10L11 4" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                              </svg>
+                            </motion.div>
+                          )}
+                        </div>
+                      </motion.button>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            )}
+
             {/* Day route map */}
             <motion.div variants={contentVariants} custom={0.8}>
-              <DayRouteMap dayNumber={day.day} />
+              <DayRouteMap dayNumber={effectiveDay.day} />
             </motion.div>
 
             {/* Parent tip */}
@@ -783,15 +905,15 @@ const TodayTab = () => {
               }}
             >
               <p className="text-base font-bold text-primary mb-1">오늘의 꿀팁 🍯</p>
-              <p className="text-base text-foreground leading-relaxed">{day.parentTip}</p>
+              <p className="text-base text-foreground leading-relaxed">{effectiveDay.parentTip}</p>
             </motion.div>
 
             {/* Timeline */}
             <motion.div variants={contentVariants} custom={1.5} className="card-base">
               <div className="flex items-center gap-2 mb-5">
-                <h4 className="text-lg font-bold text-foreground">{day.date} ({day.weekday})</h4>
-                <span className={`text-xs font-semibold px-2 py-0.5 rounded-md border ${locationBadge[day.location] || ""}`}>
-                  {day.location}
+                <h4 className="text-lg font-bold text-foreground">{effectiveDay.date} ({effectiveDay.weekday})</h4>
+                <span className={`text-xs font-semibold px-2 py-0.5 rounded-md border ${locationBadge[effectiveDay.location] || ""}`}>
+                  {effectiveDay.location}
                 </span>
               </div>
               <div className="relative">
@@ -801,7 +923,7 @@ const TodayTab = () => {
                   style={{ background: "hsl(var(--border))" }}
                 />
                 <div className="space-y-1">
-                  {day.schedule.map((item, i) => (
+                  {effectiveDay.schedule.map((item, i) => (
                     <motion.div
                       key={i}
                       variants={contentVariants}
@@ -835,9 +957,9 @@ const TodayTab = () => {
                         {/* 외식 끼니에 맛집 추천 */}
                         {item.type === "food" && (() => {
                           const mealKey = item.activity.includes("점심")
-                            ? `day${day.day}-lunch`
+                            ? `day${effectiveDay.day}-lunch`
                             : item.activity.includes("석식") && !item.detail?.includes("호텔")
-                              ? `day${day.day}-dinner`
+                              ? `day${effectiveDay.day}-dinner`
                               : null;
                           const recs = mealKey ? (mealRecommendations[mealKey] || []) : [];
                           const recList = recs.map(id => restaurants.find(r => r.id === id)).filter(Boolean);
@@ -884,11 +1006,11 @@ const TodayTab = () => {
               }}
             >
               <p className="text-sm font-bold mb-2" style={{ color: "hsl(20, 85%, 45%)" }}>식사 안내</p>
-              {day.meals.map((m, i) => {
+              {effectiveDay.meals.map((m, i) => {
                 const mealKey = m.includes("점심")
-                  ? `day${day.day}-lunch`
+                  ? `day${effectiveDay.day}-lunch`
                   : m.includes("저녁") && !m.includes("호텔") && !m.includes("기내")
-                    ? `day${day.day}-dinner`
+                    ? `day${effectiveDay.day}-dinner`
                     : null;
                 const recs = mealKey ? (mealRecommendations[mealKey] || []) : [];
                 const recList = recs.map(id => restaurants.find(r => r.id === id)).filter(Boolean);
