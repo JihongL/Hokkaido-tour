@@ -239,9 +239,13 @@ const dayRoutes = [
   },
 ];
 
+function escapeHtml(s: string) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
 function createEmojiIcon(emoji: string) {
   return L.divIcon({
-    html: `<div style="font-size:16px;text-align:center;line-height:32px;width:32px;height:32px;background:white;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.2);border:2px solid hsl(270,50%,55%);">${emoji}</div>`,
+    html: `<div style="font-size:16px;text-align:center;line-height:32px;width:32px;height:32px;background:white;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.2);border:2px solid hsl(270,50%,55%);">${escapeHtml(emoji)}</div>`,
     className: "emoji-marker",
     iconSize: [32, 32],
     iconAnchor: [16, 16],
