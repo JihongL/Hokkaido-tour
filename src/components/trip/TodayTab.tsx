@@ -299,9 +299,11 @@ const typeConfig: Record<string, { icon: string; color: string }> = {
 const locationBadge: Record<string, string> = {
   "시코쓰호": "bg-purple-100 text-purple-800 border-purple-200",
   "노보리베츠": "bg-rose-100 text-rose-800 border-rose-200",
-  "노보리베츠 → 도야호": "bg-violet-100 text-violet-800 border-violet-200",
+  "노보리베츠 → 소베쓰 → 도야호": "bg-violet-100 text-violet-800 border-violet-200",
   "도야호": "bg-indigo-100 text-indigo-800 border-indigo-200",
-  "신치토세": "bg-sky-100 text-sky-800 border-sky-200",
+  "도야호 → 니세코": "bg-indigo-100 text-indigo-800 border-indigo-200",
+  "도야호 → 무로란": "bg-indigo-100 text-indigo-800 border-indigo-200",
+  "시코쓰호 → 신치토세": "bg-sky-100 text-sky-800 border-sky-200",
 };
 
 const contentVariants: Variants = {
