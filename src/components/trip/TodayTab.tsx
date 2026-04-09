@@ -75,8 +75,8 @@ const days: DayData[] = [
     location: "노보리베츠 → 소베쓰 → 도야호",
     schedule: [
       { time: "08:00", activity: "조식", detail: "하나유라 조식", type: "food" },
-      { time: "09:00", activity: "곰목장", detail: "노보리베츠 곰목장 · 로프웨이 탑승", type: "activity" },
-      { time: "10:30", activity: "하나유라 체크아웃", type: "stay" },
+      { time: "09:00", activity: "하나유라 체크아웃", type: "stay" },
+      { time: "09:30", activity: "곰목장", detail: "노보리베츠 곰목장 · 로프웨이 탑승", type: "activity" },
       { time: "11:30", activity: "점심", detail: "노보리베츠 현지 식당", type: "food" },
       { time: "13:00", activity: "소베쓰로 이동", detail: "노보리베츠 → 소베쓰 · 차로 약 40분", type: "move" },
       { time: "13:40", activity: "소베쓰 공원", detail: "매화 만개! 도야호 조망 · 무료", type: "activity" },
