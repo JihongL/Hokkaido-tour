@@ -704,7 +704,7 @@ export function getTopRated(area?: AreaKey, limit = 5): Restaurant[] {
 
 /** 끼니별 추천 맛집 ID 매핑 */
 export const mealRecommendations: Record<string, string[]> = {
-  "day1-lunch": ["d1l-01", "d1l-02", "d1l-03"],   // 공항: 에비소바, 키쿠요, 랏쿄
+  // day1-lunch: 제거됨
   // day2-lunch: 미정
   "day3-lunch": ["d2l-01"],                                  // 나카무라
   // day3-dinner: 호텔 뷔페 (토야 코한 테이)
