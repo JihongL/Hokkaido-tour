@@ -61,12 +61,12 @@ const days: DayData[] = [
       { time: "10:35", activity: "인천 출발 (KE765)", type: "flight" },
       { time: "13:25", activity: "신치토세공항 도착", detail: "입국심사·세관", type: "flight" },
       { time: "14:30", activity: "렌터카 픽업", detail: "혼다렌탈리스 라벤더점 · 예약 확인서 지참", type: "move" },
-      { time: "17:00", activity: "미야비테이 체크인", detail: "노보리베츠 온천 호텔 · 5실 화양실", type: "stay" },
+      { time: "17:00", activity: "하나유라 체크인", detail: "노보리베츠 온천 료칸", type: "stay" },
       { time: "17:30", activity: "지옥계곡 & 오유누마 족욕", detail: "지옥계곡 산책 후 천연 족욕탕 · 무료", type: "activity" },
       { time: "19:00", activity: "석식", detail: "호텔 뷔페", type: "food" },
-      { time: "21:00", activity: "온천", detail: "미야비테이 온천", type: "activity" },
+      { time: "21:00", activity: "온천", detail: "하나유라 온천", type: "activity" },
     ],
-    meals: ["점심: 기내식 또는 공항에서 간단히", "저녁: 미야비테이 호텔 뷔페"],
+    meals: ["점심: 기내식 또는 공항에서 간단히", "저녁: 하나유라 호텔 뷔페"],
     parentTip: "드디어 홋카이도! 렌터카 타고 노보리베츠로. 지옥계곡 산책 후 오유누마 천연 족욕, 저녁은 호텔 뷔페!",
     preparation: ["여권", "렌터카 예약서", "국제운전면허증", "편한 신발"],
   },
@@ -76,7 +76,7 @@ const days: DayData[] = [
     schedule: [
       { time: "08:00", activity: "조식", detail: "호텔 뷔페", type: "food" },
       { time: "09:00", activity: "곰목장", detail: "노보리베츠 곰목장 · 로프웨이 탑승", type: "activity" },
-      { time: "10:00", activity: "미야비테이 체크아웃", type: "stay" },
+      { time: "10:00", activity: "하나유라 체크아웃", type: "stay" },
       { time: "10:30", activity: "소베쓰로 이동", detail: "노보리베츠 → 소베쓰 · 차로 약 40분", type: "move" },
       { time: "11:15", activity: "소베쓰 공원", detail: "매화 만개! 도야호 조망 · 무료", type: "activity" },
       { time: "12:00", activity: "점심", detail: "미정", type: "placeholder" },
@@ -116,13 +116,13 @@ const days: DayData[] = [
           { time: "09:30", activity: "사이로 전망대", detail: "도야호+우스산+요테이산 파노라마 · 무료 · 차 10분", type: "activity" },
           { time: "10:30", activity: "레이크힐 농장", detail: "목장 젤라토 · 요테이산 뷰 · 무료 · 차 5분", type: "activity" },
           { time: "11:30", activity: "도야호 유람선", detail: "나카시마 순환 50분 · 성인 1,800엔", type: "activity" },
-          { time: "12:30", activity: "점심", detail: "코노젠샤 나카무라 (예약 확정)", type: "food" },
+          { time: "12:00", activity: "점심", detail: "코노젠샤 나카무라", type: "food" },
           { time: "14:00", activity: "호숫가 산책", detail: "도류노유 족욕 · 조각공원 · 무료", type: "activity" },
           { time: "15:30", activity: "호텔 휴식 & 온천", detail: "토야 코한 테이 대욕장", type: "activity" },
           { time: "18:00", activity: "석식", detail: "호텔 뷔페", type: "food" },
           { time: "20:45", activity: "도야호 불꽃놀이", detail: "호숫가에서 관람 · 20:45~21:05", type: "activity" },
         ],
-        meals: ["조식: 호텔 뷔페", "점심: 코노젠샤 나카무라 (예약 확정)", "저녁: 토야 코한 테이 호텔 뷔페"],
+        meals: ["조식: 호텔 뷔페", "점심: 코노젠샤 나카무라", "저녁: 토야 코한 테이 호텔 뷔페"],
         parentTip: "전망대, 목장 젤라토, 유람선! 오후는 여유롭게 호숫가 족욕과 산책, 온천.",
         preparation: ["편한 옷", "카메라", "모자/선크림"],
       },
@@ -206,7 +206,7 @@ const dayRoutes = [
     day: 1, color: "#9B7EC8",
     stops: [
       { name: "신치토세공항", emoji: "✈️", lat: 42.7752, lng: 141.6925 },
-      { name: "미야비테이", emoji: "🏨", lat: 42.4957, lng: 141.1412 },
+      { name: "하나유라", emoji: "🏨", lat: 42.4940, lng: 141.1550 },
       { name: "지옥계곡", emoji: "🌋", lat: 42.4933, lng: 141.1573 },
     ],
   },
@@ -214,7 +214,7 @@ const dayRoutes = [
     day: 2, color: "#7C5BAF",
     stops: [
       { name: "곰목장", emoji: "🐻", lat: 42.4850, lng: 141.1610 },
-      { name: "미야비테이", emoji: "🚗", lat: 42.4957, lng: 141.1412 },
+      { name: "하나유라", emoji: "🚗", lat: 42.4957, lng: 141.1412 },
       { name: "소베쓰 공원", emoji: "🌸", lat: 42.5290, lng: 140.8680 },
       { name: "우스산", emoji: "🚡", lat: 42.5390, lng: 140.8603 },
       { name: "토야 코한 테이", emoji: "🏨", lat: 42.5659, lng: 140.8259 },
@@ -695,7 +695,7 @@ const TodayTab = () => {
 
             {/* 숙소 */}
             <motion.div variants={contentVariants} custom={2.5} className="space-y-3">
-              {/* 파크 호텔 미야비테이 */}
+              {/* 료테이 하나유라 */}
               <div className="card-base">
                 <div className="flex items-start gap-3 mb-3">
                   <div
@@ -705,7 +705,7 @@ const TodayTab = () => {
                     <span className="text-xl">🏨</span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-base font-bold text-foreground">파크 호텔 미야비테이</p>
+                    <p className="text-base font-bold text-foreground">료테이 하나유라</p>
                     <p className="text-sm text-muted-foreground">Noboribetsu, Hokkaido</p>
                   </div>
                   <span className={`text-xs font-semibold px-2 py-0.5 rounded-md border ${locationBadge["노보리베츠"]}`}>
@@ -774,7 +774,7 @@ const TodayTab = () => {
                       <span className="text-xl">🏨</span>
                     </div>
                     <div className="flex-1">
-                      <p className="text-base font-bold text-foreground">파크 호텔 미야비테이</p>
+                      <p className="text-base font-bold text-foreground">료테이 하나유라</p>
                       <p className="text-sm text-muted-foreground">Noboribetsu, Hokkaido</p>
                     </div>
                   </motion.div>
@@ -784,7 +784,7 @@ const TodayTab = () => {
                     <div className="card-base flex items-center gap-3 opacity-50">
                       <span className="text-xl">🏨</span>
                       <div>
-                        <p className="text-sm text-muted-foreground line-through">파크 호텔 미야비테이</p>
+                        <p className="text-sm text-muted-foreground line-through">료테이 하나유라</p>
                         <p className="text-xs text-muted-foreground">10:00 체크아웃 완료</p>
                       </div>
                     </div>

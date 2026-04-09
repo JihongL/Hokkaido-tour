@@ -124,7 +124,7 @@ const SosTab = () => {
             <h3 className="text-lg font-bold text-foreground mb-3">🏨 호텔 · ✈️ 항공사</h3>
             <div className="space-y-2.5">
               {[
-                { label: "파크 호텔 미야비테이", number: "+81-143-84-2335" },
+                { label: "료테이 하나유라", number: "+81-143-84-2322" },
                 { label: "토야 코한 테이 (도야호)", number: "+81-570-02-6571" },
                 { label: "대한항공 고객센터", number: "1588-2001" },
                 { label: "대한항공 삿포로", number: "+81-11-231-1211" },
