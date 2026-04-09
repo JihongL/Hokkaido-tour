@@ -61,8 +61,8 @@ const days: DayData[] = [
       { time: "10:35", activity: "인천 출발 (KE765)", type: "flight" },
       { time: "13:25", activity: "신치토세공항 도착", detail: "입국심사·세관", type: "flight" },
       { time: "14:30", activity: "렌터카 픽업", detail: "혼다렌탈리스 라벤더점 · 예약 확인서 지참", type: "move" },
-      { time: "17:00", activity: "하나유라 체크인", detail: "노보리베츠 온천 료칸", type: "stay" },
-      { time: "17:30", activity: "지옥계곡 & 오유누마 족욕", detail: "지옥계곡 산책 후 천연 족욕탕 · 무료", type: "activity" },
+      { time: "16:00", activity: "하나유라 체크인", detail: "노보리베츠 온천 료칸", type: "stay" },
+      { time: "16:30", activity: "지옥계곡 & 오유누마 족욕", detail: "지옥계곡 산책 후 천연 족욕탕 · 무료", type: "activity" },
       { time: "19:00", activity: "석식", detail: "하나유라 료칸 식사", type: "food" },
       { time: "21:00", activity: "온천", detail: "하나유라 온천", type: "activity" },
     ],
@@ -638,7 +638,7 @@ const TodayTab = () => {
                 <div className="grid grid-cols-2 gap-2">
                   <div className="rounded-xl p-3 text-center" style={{ background: "hsl(var(--secondary) / 0.5)" }}>
                     <p className="text-xs text-muted-foreground mb-0.5">체크인</p>
-                    <p className="text-sm font-bold text-primary">5/3 (일) 17:00</p>
+                    <p className="text-sm font-bold text-primary">5/3 (일) 16:00</p>
                   </div>
                   <div className="rounded-xl p-3 text-center" style={{ background: "hsl(var(--secondary) / 0.5)" }}>
                     <p className="text-xs text-muted-foreground mb-0.5">체크아웃</p>
