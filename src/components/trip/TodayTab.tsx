@@ -18,6 +18,7 @@ interface ScheduleItem {
   activity: string;
   detail?: string;
   type: "flight" | "move" | "food" | "stay" | "activity" | "placeholder";
+  googleMapsUrl?: string;
 }
 
 interface RouteStop {
@@ -62,7 +63,7 @@ const days: DayData[] = [
       { time: "13:25", activity: "신치토세공항 도착", detail: "입국심사·세관", type: "flight" },
       { time: "14:30", activity: "렌터카 픽업", detail: "혼다렌탈리스 라벤더점 · 예약 확인서 지참", type: "move" },
       { time: "16:00", activity: "하나유라 체크인", detail: "노보리베츠 온천 료칸", type: "stay" },
-      { time: "16:30", activity: "지옥계곡 & 오유누마 족욕", detail: "지옥계곡 산책 후 천연 족욕탕 · 무료", type: "activity" },
+      { time: "16:30", activity: "지옥계곡 & 오유누마 족욕", detail: "지옥계곡 산책 후 천연 족욕탕 · 무료", type: "activity", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=登別地獄谷" },
       { time: "19:00", activity: "석식", detail: "하나유라 료칸 식사", type: "food" },
       { time: "21:00", activity: "온천", detail: "하나유라 온천", type: "activity" },
     ],
@@ -94,12 +95,12 @@ const days: DayData[] = [
         schedule: [
           { time: "08:00", activity: "조식", detail: "하나유라 조식", type: "food" },
           { time: "10:00", activity: "하나유라 체크아웃", type: "stay" },
-          { time: "10:30", activity: "곰목장", detail: "노보리베츠 곰목장 · 로프웨이 탑승", type: "activity" },
+          { time: "10:30", activity: "곰목장", detail: "노보리베츠 곰목장 · 로프웨이 탑승", type: "activity", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=のぼりべつクマ牧場" },
           { time: "11:30", activity: "점심", detail: "온천시장 (도보)", type: "food" },
           { time: "13:00", activity: "오로후레 고개 드라이브", detail: "도도2호 산악도로 · 약 50분 · 산악 파노라마 뷰포인트 정차", type: "move" },
-          { time: "14:00", activity: "소베쓰 공원", detail: "매화 만개! 도야호 조망 · 무료", type: "activity" },
+          { time: "14:00", activity: "소베쓰 공원", detail: "매화 만개! 도야호 조망 · 무료", type: "activity", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=壮瞥公園" },
           { time: "15:00", activity: "토야 코한 테이 체크인", detail: "도야호 온천 호텔 (2박) · 호수뷰 화양실", type: "stay" },
-          { time: "15:30", activity: "우스산 로프웨이", detail: "활화산 전망대 + 쇼와신잔 조망", type: "activity" },
+          { time: "15:30", activity: "우스산 로프웨이", detail: "활화산 전망대 + 쇼와신잔 조망", type: "activity", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=有珠山ロープウェイ" },
           { time: "17:00", activity: "호숫가 산책", detail: "도류노유 족욕 · 조각공원 · 무료", type: "activity" },
           { time: "19:00", activity: "석식", detail: "호텔 뷔페", type: "food" },
           { time: "20:00", activity: "온천", detail: "토야 코한 테이 온천", type: "activity" },
@@ -125,10 +126,10 @@ const days: DayData[] = [
         schedule: [
           { time: "08:00", activity: "조식", detail: "하나유라 조식", type: "food" },
           { time: "10:00", activity: "하나유라 체크아웃", type: "stay" },
-          { time: "10:30", activity: "곰목장", detail: "노보리베츠 곰목장 · 로프웨이 탑승", type: "activity" },
+          { time: "10:30", activity: "곰목장", detail: "노보리베츠 곰목장 · 로프웨이 탑승", type: "activity", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=のぼりべつクマ牧場" },
           { time: "11:30", activity: "점심", detail: "노보리베츠 시내 식당", type: "food" },
           { time: "13:00", activity: "무로란 방면 이동", detail: "해안도로 드라이브 · 약 30분", type: "move" },
-          { time: "13:30", activity: "지구곶 전망대", detail: "태평양 270도 파노라마 · 무료 · 지구가 둥글다!", type: "activity" },
+          { time: "13:30", activity: "지구곶 전망대", detail: "태평양 270도 파노라마 · 무료 · 지구가 둥글다!", type: "activity", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=地球岬展望台" },
           { time: "14:30", activity: "도야호 방면 이동", detail: "무로란 → 도야호 · 약 1시간", type: "move" },
           { time: "15:30", activity: "토야 코한 테이 체크인", detail: "도야호 온천 호텔 (2박) · 호수뷰 화양실", type: "stay" },
           { time: "16:30", activity: "호숫가 산책", detail: "도류노유 족욕 · 조각공원 · 무료", type: "activity" },
@@ -149,9 +150,9 @@ const days: DayData[] = [
       { time: "08:00", activity: "조식", detail: "호텔 뷔페", type: "food" },
       { time: "09:30", activity: "여유로운 오전", detail: "호텔 휴식 · 호숫가 산책", type: "activity" },
       { time: "12:00", activity: "점심", detail: "코노젠샤 나카무라", type: "food" },
-      { time: "13:30", activity: "레이크힐 농장", detail: "목장 젤라토 · 요테이산 뷰 · 무료 · 차 20분", type: "activity" },
-      { time: "14:30", activity: "사이로 전망대", detail: "도야호+우스산+요테이산 파노라마 · 무료 · 차 5분", type: "activity" },
-      { time: "15:30", activity: "요테이산 뷰포인트", detail: "미니후지 포토스팟 · 차 20분", type: "activity" },
+      { time: "13:30", activity: "레이크힐 농장", detail: "목장 젤라토 · 요테이산 뷰 · 무료 · 차 20분", type: "activity", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=レークヒルファーム+洞爺湖" },
+      { time: "14:30", activity: "사이로 전망대", detail: "도야호+우스산+요테이산 파노라마 · 무료 · 차 5분", type: "activity", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=サイロ展望台+洞爺湖" },
+      { time: "15:30", activity: "요테이산 뷰포인트", detail: "미니후지 포토스팟 · 차 20분", type: "activity", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=羊蹄山+ふきだし公園" },
       { time: "17:00", activity: "호텔 복귀 & 온천", detail: "토야 코한 테이 대욕장", type: "activity" },
       { time: "18:00", activity: "석식", detail: "호텔 뷔페", type: "food" },
       { time: "20:45", activity: "도야호 불꽃놀이", detail: "호숫가에서 관람 · 20:45~21:05", type: "activity" },
@@ -166,7 +167,7 @@ const days: DayData[] = [
     schedule: [
       { time: "07:30", activity: "조식", detail: "호텔 뷔페", type: "food" },
       { time: "08:30", activity: "토야 코한 테이 체크아웃", type: "stay" },
-      { time: "10:00", activity: "시코쓰호", detail: "일본에서 가장 맑은 호수 · 도야호에서 약 1.5시간", type: "activity" },
+      { time: "10:00", activity: "시코쓰호", detail: "일본에서 가장 맑은 호수 · 도야호에서 약 1.5시간", type: "activity", googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=支笏湖温泉" },
       { time: "12:00", activity: "점심?", detail: "미확정 — 추후 업데이트 예정", type: "placeholder" },
       { time: "14:00", activity: "공항 이동 & 렌터카 반납", detail: "혼다렌탈리스 라벤더점", type: "move" },
       { time: "16:20", activity: "신치토세 출발 (KE770)", type: "flight" },
@@ -953,17 +954,29 @@ const TodayTab = () => {
                           }}
                         />
                       </div>
-                      <div
-                        className="flex-1 min-w-0 rounded-xl p-3 transition-colors"
+                      {(() => {
+                        const Wrapper = item.googleMapsUrl ? "a" : "div";
+                        const wrapperProps = item.googleMapsUrl ? {
+                          href: item.googleMapsUrl,
+                          target: "_blank" as const,
+                          rel: "noopener noreferrer",
+                        } : {};
+                        return (
+                      <Wrapper
+                        {...wrapperProps}
+                        className={`flex-1 min-w-0 rounded-xl p-3 transition-colors ${item.googleMapsUrl ? "active:scale-[0.98] transition-transform" : ""}`}
                         style={item.type === "placeholder" ? {
                           background: "hsl(var(--secondary) / 0.2)",
                           border: "1.5px dashed hsl(var(--border))",
                           opacity: 0.7,
                         } : { background: "hsl(var(--secondary) / 0.4)" }}
                       >
-                        <p className="text-base font-semibold text-foreground">
-                          {typeConfig[item.type]?.icon} {item.activity}
-                        </p>
+                        <div className="flex items-center justify-between">
+                          <p className="text-base font-semibold text-foreground">
+                            {typeConfig[item.type]?.icon} {item.activity}
+                          </p>
+                          {item.googleMapsUrl && <span className="text-sm text-muted-foreground flex-shrink-0">📍</span>}
+                        </div>
                         {item.detail && (
                           <p className="text-sm text-muted-foreground mt-0.5">{item.detail}</p>
                         )}
@@ -1001,7 +1014,9 @@ const TodayTab = () => {
                             </div>
                           );
                         })()}
-                      </div>
+                      </Wrapper>
+                        );
+                      })()}
                     </motion.div>
                   ))}
                 </div>
