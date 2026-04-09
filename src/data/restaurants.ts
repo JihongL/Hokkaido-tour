@@ -199,13 +199,13 @@ export const restaurants: Restaurant[] = [
     parking: "있음",
     priceRange: "¥3,000~¥5,999",
     googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=湖の膳舎なかむら+洞爺湖温泉186-85",
-    seniorNote: "⭐ 5/4 예약 확정. 도쿄 나카노에서 이전한 본격 일식점. 도야호 현지 식재료 코스요리. 16석 소규모로 10명이면 사실상 대절. 현금만 가능",
+    seniorNote: "⭐ 5/5 예약 확정. 도쿄 나카노에서 이전한 본격 일식점. 도야호 현지 식재료 코스요리. 16석 소규모로 10명이면 사실상 대절. 현금만 가능",
     lat: 42.5685,
     lng: 140.8037,
     gwStatus: "confirmed",
     familyFriendly: true,
-    familyNote: "5/4 예약 확정. 도야호 현지 식재료 일식 코스. 16석 대절급. 현금만 가능",
-    dayRecommendation: ["Day 2 점심"],
+    familyNote: "5/5 예약 확정. 도야호 현지 식재료 일식 코스. 16석 대절급. 현금만 가능",
+    dayRecommendation: ["Day 3 점심"],
   },
 
   // ============================================================
@@ -705,8 +705,8 @@ export function getTopRated(area?: AreaKey, limit = 5): Restaurant[] {
 /** 끼니별 추천 맛집 ID 매핑 */
 export const mealRecommendations: Record<string, string[]> = {
   "day1-lunch": ["d1l-01", "d1l-02", "d1l-03"],   // 공항: 에비소바, 키쿠요, 랏쿄
-  "day2-lunch": ["d2l-01"],                         // 도야호: 코노젠샤 나카무라 (5/4 예약 확정)
-  "day3-lunch": ["d3l-01", "d3l-02", "d3l-03"],   // 도야호: 피닉스, 아푸타, 카와나미
+  // day2-lunch: 미정
+  "day3-lunch": ["d2l-01", "d3l-01", "d3l-02", "d3l-03"],   // 나카무라(5/5 예약확정), 피닉스, 아푸타, 카와나미
   // day3-dinner: 호텔 뷔페 (토야 코한 테이)
   "day4-lunch": ["d4l-01", "d4l-02", "d4l-03"],   // 시코쓰호: 코토부키, 톤톤, 공항 이토
 };
@@ -722,8 +722,7 @@ export const gwBackupRecommendations: Record<string, string[]> = {
 /** MapTab용 선별 맛집 ID */
 export const SELECTED_RESTAURANT_IDS = new Set([
   "d1l-01", "d1l-02", "d1l-03",
-  "d2l-01",
-  "d3l-01", "d3l-02", "d3l-03",
+  "d2l-01", "d3l-01", "d3l-02", "d3l-03",
   "d3d-01", "d3d-02", "d3d-03",
   "d4l-01", "d4l-02", "d4l-03",
 ]);
