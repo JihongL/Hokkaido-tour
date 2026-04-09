@@ -544,7 +544,7 @@ const TodayTab = () => {
               <div className="flex items-center justify-between mb-4">
                 <h4 className="text-lg font-bold text-foreground">준비 체크리스트</h4>
                 <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-primary/10 text-primary tabular-nums">
-                  {Object.values(checklist).filter(Boolean).length} / 9
+                  {Object.values(checklist).filter(Boolean).length} / 13
                 </span>
               </div>
               {/* Progress bar */}
@@ -554,13 +554,13 @@ const TodayTab = () => {
                   style={{ background: "hsl(var(--primary))" }}
                   initial={{ width: 0 }}
                   animate={{
-                    width: `${(Object.values(checklist).filter(Boolean).length / 9) * 100}%`,
+                    width: `${(Object.values(checklist).filter(Boolean).length / 13) * 100}%`,
                   }}
                   transition={{ duration: 0.5, ease: "easeOut" }}
                 />
               </div>
               <div className="space-y-1">
-                {["여권 (유효기간 6개월 이상)", "항공권 정보 저장", "환전 (일본 엔)", "유심/eSIM 준비", "여행자 보험 가입", "호텔 예약 확인서", "국제운전면허증", "상비약 챙기기", "온천 타올"].map((item, i) => {
+                {["여권 (유효기간 6개월 이상)", "항공권 정보 저장", "환전 (일본 엔 · 소액 현금)", "유심/eSIM 준비", "여행자 보험 가입", "호텔 예약 확인서", "국제운전면허증", "상비약 챙기기", "온천 타올", "멀티어댑터 (일본 Type A)", "보조배터리 (기내 반입)", "차량용 충전기", "우산/우비"].map((item, i) => {
                   const checked = !!checklist[item];
                   return (
                     <motion.label
