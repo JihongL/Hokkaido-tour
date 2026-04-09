@@ -93,16 +93,16 @@ const days: DayData[] = [
         ],
         schedule: [
           { time: "08:00", activity: "조식", detail: "하나유라 조식", type: "food" },
-          { time: "09:00", activity: "하나유라 체크아웃", type: "stay" },
-          { time: "09:30", activity: "곰목장", detail: "노보리베츠 곰목장 · 로프웨이 탑승", type: "activity" },
+          { time: "10:00", activity: "하나유라 체크아웃", type: "stay" },
+          { time: "10:30", activity: "곰목장", detail: "노보리베츠 곰목장 · 로프웨이 탑승", type: "activity" },
           { time: "11:30", activity: "점심", detail: "온천시장 (도보)", type: "food" },
-          { time: "13:00", activity: "오로후레 고개 드라이브", detail: "도도2호 산악도로 · 약 40분 · 산악 파노라마", type: "move" },
-          { time: "13:40", activity: "소베쓰 공원", detail: "매화 만개! 도야호 조망 · 무료", type: "activity" },
-          { time: "14:30", activity: "토야 코한 테이 체크인", detail: "도야호 온천 호텔 (2박) · 호수뷰 화양실", type: "stay" },
+          { time: "13:00", activity: "오로후레 고개 드라이브", detail: "도도2호 산악도로 · 약 50분 · 산악 파노라마 뷰포인트 정차", type: "move" },
+          { time: "14:00", activity: "소베쓰 공원", detail: "매화 만개! 도야호 조망 · 무료", type: "activity" },
+          { time: "15:00", activity: "토야 코한 테이 체크인", detail: "도야호 온천 호텔 (2박) · 호수뷰 화양실", type: "stay" },
           { time: "15:30", activity: "우스산 로프웨이", detail: "활화산 전망대 + 쇼와신잔 조망", type: "activity" },
           { time: "17:00", activity: "호숫가 산책", detail: "도류노유 족욕 · 조각공원 · 무료", type: "activity" },
           { time: "19:00", activity: "석식", detail: "호텔 뷔페", type: "food" },
-          { time: "20:30", activity: "온천", detail: "토야 코한 테이 온천", type: "activity" },
+          { time: "20:00", activity: "온천", detail: "토야 코한 테이 온천", type: "activity" },
           { time: "20:45", activity: "도야호 불꽃놀이", detail: "호반에서 관람 · 20:45~21:05", type: "activity" },
         ],
         meals: ["조식: 하나유라 조식", "점심: 온천시장 (해산물)", "저녁: 토야 코한 테이 호텔 뷔페"],
@@ -124,8 +124,8 @@ const days: DayData[] = [
         ],
         schedule: [
           { time: "08:00", activity: "조식", detail: "하나유라 조식", type: "food" },
-          { time: "09:00", activity: "하나유라 체크아웃", type: "stay" },
-          { time: "09:30", activity: "곰목장", detail: "노보리베츠 곰목장 · 로프웨이 탑승", type: "activity" },
+          { time: "10:00", activity: "하나유라 체크아웃", type: "stay" },
+          { time: "10:30", activity: "곰목장", detail: "노보리베츠 곰목장 · 로프웨이 탑승", type: "activity" },
           { time: "11:30", activity: "점심", detail: "노보리베츠 시내 식당", type: "food" },
           { time: "13:00", activity: "무로란 방면 이동", detail: "해안도로 드라이브 · 약 30분", type: "move" },
           { time: "13:30", activity: "지구곶 전망대", detail: "태평양 270도 파노라마 · 무료 · 지구가 둥글다!", type: "activity" },
@@ -133,7 +133,7 @@ const days: DayData[] = [
           { time: "15:30", activity: "토야 코한 테이 체크인", detail: "도야호 온천 호텔 (2박) · 호수뷰 화양실", type: "stay" },
           { time: "16:30", activity: "호숫가 산책", detail: "도류노유 족욕 · 조각공원 · 무료", type: "activity" },
           { time: "19:00", activity: "석식", detail: "호텔 뷔페", type: "food" },
-          { time: "20:30", activity: "온천", detail: "토야 코한 테이 온천", type: "activity" },
+          { time: "20:00", activity: "온천", detail: "토야 코한 테이 온천", type: "activity" },
           { time: "20:45", activity: "도야호 불꽃놀이", detail: "호반에서 관람 · 20:45~21:05", type: "activity" },
         ],
         meals: ["조식: 하나유라 조식", "점심: 노보리베츠 시내 식당", "저녁: 토야 코한 테이 호텔 뷔페"],
@@ -144,7 +144,7 @@ const days: DayData[] = [
   },
   {
     day: 3, date: "5월 5일", weekday: "화", title: "미니후지 요테이산 & 나카무라",
-    location: "도야호 → 니세코",
+    location: "도야호 근교",
     schedule: [
       { time: "08:00", activity: "조식", detail: "호텔 뷔페", type: "food" },
       { time: "09:30", activity: "여유로운 오전", detail: "호텔 휴식 · 호숫가 산책", type: "activity" },
@@ -164,8 +164,9 @@ const days: DayData[] = [
     day: 4, date: "5월 6일", weekday: "수", title: "시코쓰호 & 귀국",
     location: "시코쓰호 → 신치토세",
     schedule: [
-      { time: "08:00", activity: "조식", detail: "호텔", type: "food" },
-      { time: "09:30", activity: "시코쓰호", detail: "일본에서 가장 맑은 호수", type: "activity" },
+      { time: "07:30", activity: "조식", detail: "호텔 뷔페", type: "food" },
+      { time: "08:30", activity: "토야 코한 테이 체크아웃", type: "stay" },
+      { time: "10:00", activity: "시코쓰호", detail: "일본에서 가장 맑은 호수 · 도야호에서 약 1.5시간", type: "activity" },
       { time: "12:00", activity: "점심?", detail: "미확정 — 추후 업데이트 예정", type: "placeholder" },
       { time: "14:00", activity: "공항 이동 & 렌터카 반납", detail: "혼다렌탈리스 라벤더점", type: "move" },
       { time: "16:20", activity: "신치토세 출발 (KE770)", type: "flight" },
@@ -190,7 +191,7 @@ const dayRoutes = [
     day: 2, color: "#7C5BAF",
     stops: [
       { name: "곰목장", emoji: "🐻", lat: 42.4850, lng: 141.1610 },
-      { name: "하나유라", emoji: "🚗", lat: 42.4957, lng: 141.1412 },
+      { name: "하나유라", emoji: "🏨", lat: 42.4940, lng: 141.1550 },
       { name: "소베쓰 공원", emoji: "🌸", lat: 42.5290, lng: 140.8680 },
       { name: "우스산", emoji: "🚡", lat: 42.5390, lng: 140.8603 },
       { name: "토야 코한 테이", emoji: "🏨", lat: 42.5659, lng: 140.8259 },
@@ -282,7 +283,8 @@ const locationBadge: Record<string, string> = {
   "노보리베츠 → 소베쓰 → 도야호": "bg-violet-100 text-violet-800 border-violet-200",
   "노보리베츠 → 무로란 → 도야호": "bg-violet-100 text-violet-800 border-violet-200",
   "노보리베츠 → 도야호": "bg-violet-100 text-violet-800 border-violet-200",
-  "도야호 → 니세코": "bg-indigo-100 text-indigo-800 border-indigo-200",
+  "도야호": "bg-indigo-100 text-indigo-800 border-indigo-200",
+  "도야호 근교": "bg-indigo-100 text-indigo-800 border-indigo-200",
   "시코쓰호 → 신치토세": "bg-sky-100 text-sky-800 border-sky-200",
 };
 
@@ -430,7 +432,7 @@ const TodayTab = () => {
                 </div>
                 <div className="text-right">
                   <p className="text-3xl">{weather?.current.icon || "☀️"}</p>
-                  <p className="text-lg font-bold">{weather?.current.temp || 28}°C</p>
+                  <p className="text-lg font-bold">{weather?.current.temp || 12}°C</p>
                 </div>
               </div>
             </div>
