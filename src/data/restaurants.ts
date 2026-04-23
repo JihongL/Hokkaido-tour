@@ -176,6 +176,39 @@ export const restaurants: Restaurant[] = [
   },
 
   // ============================================================
+  // 끼니 1.5. Day 2 점심 — 노보리베츠 근교 (카니오 · 예약 확정)
+  // ============================================================
+  {
+    id: "d2l-kanio",
+    nameJa: "Kanio",
+    nameKr: "카니오",
+    area: "noboribetsu",
+    tabelogUrl: "",
+    rating: 0,
+    reviewCount: 0,
+    genre: "게요리 (蟹料理)",
+    representativeMenu: "게요리 코스",
+    address: "北海道登別市",
+    phone: "",
+    businessHours: "",
+    closedDays: "",
+    totalSeats: 0,
+    privateRoom: "",
+    seatType: "",
+    reservable: "예약 확정 (12:30)",
+    parking: "",
+    priceRange: "",
+    googleMapsUrl: "https://maps.app.goo.gl/7uygBSkuvuVn8hyW8",
+    seniorNote: "곰목장 하산 후 도야호 방향 경유지. 10명 12:30 예약 확정",
+    lat: 42.4779,
+    lng: 141.2423,
+    gwStatus: "confirmed",
+    familyFriendly: true,
+    familyNote: "게요리 전문점. 10명 12:30 예약 확정",
+    dayRecommendation: ["Day 2 점심"],
+  },
+
+  // ============================================================
   // 끼니 2. Day 3 점심 — 도야호 (코노젠샤 나카무라)
   // ============================================================
   {
@@ -705,7 +738,7 @@ export function getTopRated(area?: AreaKey, limit = 5): Restaurant[] {
 /** 끼니별 추천 맛집 ID 매핑 */
 export const mealRecommendations: Record<string, string[]> = {
   // day1-lunch: 제거됨
-  // day2-lunch: 미정
+  "day2-lunch": ["d2l-kanio"],                               // 카니오 (예약 확정)
   "day3-lunch": ["d2l-01"],                                  // 나카무라
   // day3-dinner: 호텔 뷔페 (토야 코한 테이)
   "day4-lunch": ["d4l-01", "d4l-02", "d4l-03"],   // 시코쓰호: 코토부키, 톤톤, 공항 이토
@@ -722,6 +755,7 @@ export const gwBackupRecommendations: Record<string, string[]> = {
 /** MapTab용 선별 맛집 ID */
 export const SELECTED_RESTAURANT_IDS = new Set([
   "d1l-01", "d1l-02", "d1l-03",
+  "d2l-kanio",
   "d2l-01", "d3l-01", "d3l-02", "d3l-03",
   "d3d-01", "d3d-02", "d3d-03",
   "d4l-01", "d4l-02", "d4l-03",
