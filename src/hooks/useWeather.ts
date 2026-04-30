@@ -14,6 +14,9 @@ interface WeatherData {
 
 interface ForecastDay {
   date: string;
+  dateKey: string;
+  month: number;
+  day: number;
   high: number;
   low: number;
   humidity: number;
@@ -99,6 +102,9 @@ async function fetchWeather(lat: number, lon: number, city: string): Promise<Wea
 
     forecast.push({
       date: `${key} (${dayName})`,
+      dateKey: key,
+      month,
+      day,
       high: Math.round(Math.max(...val.temps)),
       low: Math.round(Math.min(...val.temps)),
       humidity: Math.round(val.humidities.reduce((a, b) => a + b, 0) / val.humidities.length),
@@ -115,6 +121,8 @@ async function fetchWeather(lat: number, lon: number, city: string): Promise<Wea
 const SHIKOTSU = { lat: 42.7570, lon: 141.3490, city: "시코쓰호" };
 // Noboribetsu coordinates
 const NOBORIBETSU = { lat: 42.4570, lon: 141.1690, city: "노보리베츠" };
+// Toyako coordinates
+const TOYAKO = { lat: 42.5659, lon: 140.8259, city: "도야호" };
 
 export function useWeatherShikotsu() {
   return useQuery({
@@ -130,6 +138,16 @@ export function useWeatherNoboribetsu() {
   return useQuery({
     queryKey: ["weather", "noboribetsu"],
     queryFn: () => fetchWeather(NOBORIBETSU.lat, NOBORIBETSU.lon, NOBORIBETSU.city),
+    staleTime: 30 * 60 * 1000,
+    retry: 1,
+    enabled: !!API_KEY,
+  });
+}
+
+export function useWeatherToyako() {
+  return useQuery({
+    queryKey: ["weather", "toyako"],
+    queryFn: () => fetchWeather(TOYAKO.lat, TOYAKO.lon, TOYAKO.city),
     staleTime: 30 * 60 * 1000,
     retry: 1,
     enabled: !!API_KEY,

@@ -5,7 +5,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 delete (L.Icon.Default.prototype as any)._getIconUrl;
-import { useWeatherShikotsu } from "@/hooks/useWeather";
+import { useWeatherShikotsu, useWeatherNoboribetsu, useWeatherToyako, type WeatherResult } from "@/hooks/useWeather";
 import { restaurants, mealRecommendations } from "@/data/restaurants";
 
 const TRIP_START = new Date("2026-05-03T00:00:00+09:00");
@@ -44,6 +44,8 @@ interface DayOption {
 interface DayData {
   day: number;
   date: string;
+  month: number;
+  dayOfMonth: number;
   weekday: string;
   title: string;
   location: string;
@@ -56,7 +58,7 @@ interface DayData {
 
 const days: DayData[] = [
   {
-    day: 1, date: "5월 3일", weekday: "일", title: "신치토세 도착 & 노보리베츠",
+    day: 1, date: "5월 3일", month: 5, dayOfMonth: 3, weekday: "일", title: "신치토세 도착 & 노보리베츠",
     location: "노보리베츠",
     schedule: [
       { time: "10:35", activity: "인천 출발 (KE765)", type: "flight" },
@@ -72,7 +74,7 @@ const days: DayData[] = [
     preparation: ["여권", "렌터카 예약서", "국제운전면허증", "편한 신발"],
   },
   {
-    day: 2, date: "5월 4일", weekday: "월", title: "곰목장 & 도야호 이동",
+    day: 2, date: "5월 4일", month: 5, dayOfMonth: 4, weekday: "월", title: "곰목장 & 도야호 이동",
     location: "노보리베츠 → 도야호",
     schedule: [],
     meals: [],
@@ -144,7 +146,7 @@ const days: DayData[] = [
     ],
   },
   {
-    day: 3, date: "5월 5일", weekday: "화", title: "미니후지 요테이산 & 나카무라",
+    day: 3, date: "5월 5일", month: 5, dayOfMonth: 5, weekday: "화", title: "미니후지 요테이산 & 나카무라",
     location: "도야호 근교",
     schedule: [
       { time: "08:00", activity: "조식", detail: "호텔 뷔페", type: "food" },
@@ -162,7 +164,7 @@ const days: DayData[] = [
     preparation: ["편한 옷", "카메라", "모자/선크림"],
   },
   {
-    day: 4, date: "5월 6일", weekday: "수", title: "시코쓰호 & 귀국",
+    day: 4, date: "5월 6일", month: 5, dayOfMonth: 6, weekday: "수", title: "시코쓰호 & 귀국",
     location: "시코쓰호 → 신치토세",
     schedule: [
       { time: "07:30", activity: "조식", detail: "호텔 뷔페", type: "food" },
@@ -325,6 +327,31 @@ const TodayTab = () => {
     : day;
 
   const { data: weather } = useWeatherShikotsu();
+  const { data: weatherNoboribetsu } = useWeatherNoboribetsu();
+  const { data: weatherToyako } = useWeatherToyako();
+
+  // Match each day's date to its location's forecast.
+  // OpenWeatherMap returns 5 days from "now"; once a trip day is in the past it falls out
+  // of the forecast list, so we fall back to current weather + an "예보 범위 밖" badge.
+  const dayWeather = useMemo(() => {
+    if (!effectiveDay) return null;
+    const locationByDay: Record<number, { source: WeatherResult | undefined; label: string }> = {
+      1: { source: weatherNoboribetsu, label: "노보리베츠" },
+      2: { source: weatherToyako, label: "도야호" },
+      3: { source: weatherToyako, label: "도야호" },
+      4: { source: weather, label: "시코쓰호" },
+    };
+    const entry = locationByDay[effectiveDay.day];
+    if (!entry?.source) return null;
+    const forecast = entry.source.forecast.find(
+      f => f.month === effectiveDay.month && f.day === effectiveDay.dayOfMonth,
+    );
+    return {
+      forecast: forecast ?? null,
+      current: entry.source.current,
+      label: entry.label,
+    };
+  }, [effectiveDay, weather, weatherNoboribetsu, weatherToyako]);
 
   const [checklist, setChecklist] = useState<Record<string, boolean>>(() => {
     try {
@@ -922,6 +949,70 @@ const TodayTab = () => {
               <p className="text-base font-bold text-primary mb-1">오늘의 꿀팁 🍯</p>
               <p className="text-base text-foreground leading-relaxed">{effectiveDay.parentTip}</p>
             </motion.div>
+
+            {/* Day forecast — matched to this day's date */}
+            {dayWeather && (
+              <motion.div
+                variants={contentVariants}
+                custom={1.2}
+                className="rounded-2xl p-4 border bg-card"
+                style={{ borderColor: "hsl(var(--border))" }}
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <p className="text-sm font-bold text-foreground">
+                    {effectiveDay.date} 날씨
+                  </p>
+                  <div className="flex items-center gap-1.5">
+                    {!dayWeather.forecast && (
+                      <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-md border bg-amber-50 text-amber-700 border-amber-200">
+                        예보 범위 밖
+                      </span>
+                    )}
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded-md border bg-secondary/50 text-muted-foreground">
+                      {dayWeather.label}
+                    </span>
+                  </div>
+                </div>
+                {dayWeather.forecast ? (
+                  <div className="flex items-center gap-4">
+                    <span className="text-4xl">{dayWeather.forecast.icon}</span>
+                    <div className="flex-1">
+                      <p className="text-sm text-muted-foreground capitalize">
+                        {dayWeather.forecast.description}
+                      </p>
+                      <p className="text-base font-bold text-foreground tabular-nums">
+                        <span style={{ color: "hsl(0, 70%, 55%)" }}>{dayWeather.forecast.high}°</span>
+                        <span className="text-muted-foreground mx-1">/</span>
+                        <span style={{ color: "hsl(210, 70%, 50%)" }}>{dayWeather.forecast.low}°</span>
+                      </p>
+                    </div>
+                    <div className="text-right text-xs text-muted-foreground space-y-0.5">
+                      <p>💧 {dayWeather.forecast.humidity}%</p>
+                      <p>☔ {dayWeather.forecast.rain}%</p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-4">
+                    <span className="text-4xl">{dayWeather.current.icon}</span>
+                    <div className="flex-1">
+                      <p className="text-sm text-muted-foreground capitalize">
+                        {dayWeather.current.description}
+                      </p>
+                      <p className="text-base font-bold text-foreground tabular-nums">
+                        현재 {dayWeather.current.temp}°
+                        <span className="text-xs font-normal text-muted-foreground ml-1.5">
+                          체감 {dayWeather.current.feels_like}°
+                        </span>
+                      </p>
+                    </div>
+                    <div className="text-right text-xs text-muted-foreground space-y-0.5">
+                      <p>💧 {dayWeather.current.humidity}%</p>
+                      <p>💨 {dayWeather.current.wind_speed}m/s</p>
+                    </div>
+                  </div>
+                )}
+              </motion.div>
+            )}
 
             {/* Timeline */}
             <motion.div variants={contentVariants} custom={1.5} className="card-base">
